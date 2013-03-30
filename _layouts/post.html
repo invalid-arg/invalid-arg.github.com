@@ -1,0 +1,11 @@
+---
+layout: layout
+---
+
+<div class="post">
+	<h3><a href="{{ page.url }}">{{ page.title }}</a></h3>
+	<div class="description">
+	{{ content }}
+	</div>
+	<span class="date">{{ page.date | date: "%B %e, %Y" }}</span>
+</div>

@@ -1,0 +1,13 @@
+---
+layout: layout
+---
+
+{% for post in site.posts offset: 0 limit: 5 %}
+	<div class="post">
+		<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+		<div class="description">
+		{{ post.content | truncatewords: 100 }}
+		</div>
+		<span class="date">{{ post.date | date: "%B %e, %Y" }}</span>
+	</div>
+{% endfor %}	

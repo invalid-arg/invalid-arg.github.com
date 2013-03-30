@@ -1,0 +1,106 @@
+body {
+	background: #fcfcfc;
+}
+
+.wrapper {
+	width: 90%;
+	max-width: 38rem;
+	margin: 0 auto;
+	padding: 0 1rem;
+	overflow: hidden;
+	font-family: 'Myriad Pro', Verdana, Arial, Tahoma;
+	color: #333;
+}
+
+.wrapper header {
+	display: block;
+	padding: 1.5rem 0 1rem 0;
+}
+
+#name {
+	display: block;
+	background-size: 4rem 4rem;
+	width: 4rem;
+	height: 4rem;
+}
+
+#name h1, #name h2 {
+	display: none;
+}
+
+#content {
+	overflow: hidden;
+}
+
+.post {
+	margin-bottom: 6rem;
+}
+
+.post h3 {
+	font-size: 2.5rem;
+	line-height: 1.25;
+	font-weight: bold;
+	margin-bottom: 1.2rem;
+	background-color: black;
+	color: transparent;
+	text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.3);
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+}
+
+.post h3 a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.post h3 a:hover {
+	text-decoration: underline;
+}
+
+.post .description {
+	line-height: 1.5;
+	font-size: 1.3rem;
+}
+
+.post .description p {
+	margin-bottom: 1rem;
+}
+
+.post .date {
+	color: #BBB;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	font-style: italic;
+	margin-top: 16px;
+	display: block;
+}
+
+.post img {
+	border: 1px solid #ccc;
+	width: 100%;
+}
+
+a {
+	color: rgb(0, 119, 153);
+}
+
+code {
+	font-size: 14px;
+	font-family: Consolas, 'Bitstream Vera Sans Mono', 'Courier New', Courier;
+	line-height: 1;
+	word-wrap: break-word;
+}
+
+pre	{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	border-left: 2px #1C3FFD solid;
+	padding-left: 10px;
+}
+
+ul {
+	padding-left: 10px;
+	margin: 10px;
+	list-style: disc;
+}
