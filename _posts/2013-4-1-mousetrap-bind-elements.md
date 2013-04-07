@@ -23,5 +23,5 @@ The popups can be styled via the .mousetrap-popup style.
 
 I'm going to implement a feedly style popup when I've got time but that's it for now.
 
-[Github](https://github.com/invalid-arg/mousetrap.bindElements)
+[GitHub](https://github.com/invalid-arg/mousetrap.bindElements)
 
