@@ -11,7 +11,7 @@ To help simplify the implementation I've written an extension that will automati
 <a href="http://www.stackoverflow.com" data-mousetrap="ctrl+s">Stack Overflow</a>
 {% endhighlight %}
  
-I've set up a couple of [examples](/examples/mousetrapbindelements.html) to demonstrate it.
+I've set up a couple of [examples](/examples/mousetrapBindElements.html) to demonstrate it.
 
 As an added bonus my library allows you to bind a key to show all the shortcuts available. Simple to do via:
 
