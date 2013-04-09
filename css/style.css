@@ -67,13 +67,21 @@ body {
 	margin-bottom: 1rem;
 }
 
+.post .post-footer {
+		margin-top: 16px;
+}
+
+.post .post-footer iframe {
+	float: left;
+}
+
 .post .date {
 	color: #BBB;
 	font-size: 0.9rem;
 	line-height: 1.5;
 	font-style: italic;
-	margin-top: 16px;
-	display: block;
+	float: left;
+	margin-right: 10px;
 }
 
 .post img {
