@@ -3,11 +3,15 @@ layout: layout
 ---
 
 {% for post in site.posts offset: 0 limit: 5 %}
-	<div class="post">
-		<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-		<div class="description">
-		{{ post.content | truncatewords: 100 }}
+	<div class="{% cycle 'normal', 'alternate' %}">
+		<div class="post">
+			<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+			<div class="description">
+				{{ post.content }}
+			</div>
+			<span class="date">{{ post.date | date: "%B %e, %Y" }}</span>
+			<div class="clear:both;"></div>
 		</div>
-		<span class="date">{{ post.date | date: "%B %e, %Y" }}</span>
 	</div>
+	<div class="{% cycle 'tear', 'tear-alternate' %}"></div>
 {% endfor %}	

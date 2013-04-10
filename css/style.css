@@ -1,12 +1,8 @@
 body {
-	background: #fcfcfc;
+	background: #eeeeee;
 }
 
 .wrapper {
-	width: 90%;
-	max-width: 38rem;
-	margin: 0 auto;
-	padding: 0 1rem;
 	overflow: hidden;
 	font-family: 'Myriad Pro', Verdana, Arial, Tahoma;
 	color: #333;
@@ -20,7 +16,9 @@ body {
 #name {
 	display: block;
 	background-size: 4rem 4rem;
-	width: 4rem;
+	width: 64px;
+	border-radius:25px;
+	margin: 0 auto;
 	height: 4rem;
 }
 
@@ -33,20 +31,40 @@ body {
 }
 
 .post {
-	margin-bottom: 6rem;
+	margin: 0 auto;
+	padding-top: 45px;
+	max-width: 800px;
+	width: 90%;
+	padding-bottom: 65px;
+}
+
+.tear {
+	background: url('/img/tear.png') repeat-x bottom;
+	height: 54px;
+}
+
+.tear-alternate {
+	background: url('/img/tear-alternate.png') repeat-x bottom;
+	height: 54px;
+}
+
+.alternate {
+	background: #e4e4e4;
 }
 
 .post h3 {
-	font-size: 2.5rem;
+	font-size: 66px;
+	font-family: 'Helvetica Neue', Helvetica, pragmatica-web, Arial, sans-serif;
 	line-height: 1.25;
 	font-weight: bold;
-	margin-bottom: 1.2rem;
+	margin-bottom: 65px;
 	background-color: black;
 	color: transparent;
 	text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.3);
 	-webkit-background-clip: text;
 	-moz-background-clip: text;
 	background-clip: text;
+	text-align: center;
 }
 
 .post h3 a {
@@ -60,7 +78,8 @@ body {
 
 .post .description {
 	line-height: 1.5;
-	font-size: 1.3rem;
+	font-size: 26px;
+	font-family: ff-meta-serif-web-pro, Georgia, Times, 'Times New Roman', serif;
 }
 
 .post .description p {
@@ -80,7 +99,6 @@ body {
 	font-size: 0.9rem;
 	line-height: 1.5;
 	font-style: italic;
-	float: left;
 	margin-right: 10px;
 }
 
@@ -96,10 +114,15 @@ a {
 }
 
 code {
-	font-size: 14px;
-	font-family: Helvetica;
-	line-height: 1;
+	font-size: 16px;
+	line-height: 1.4em;
 	word-wrap: break-word;
+	font-family: Monaco, 'Lucida Console', monospace;
+	display: block;
+	padding: 10px;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 pre	{
@@ -107,6 +130,7 @@ pre	{
 	margin-bottom: 2.5rem;
 	border-left: 2px #1C3FFD solid;
 	padding-left: 10px;
+	
 }
 
 ul {

@@ -28,7 +28,7 @@ And thats it!
 
 If you want to use it in the traditional fashion or this method isn't working for you, try the code below:
 
-{% highlight html linenos %}
+{% highlight html linenos=table %}
 <script src="http://invalid-arg.github.com/ko-inspector.js"></script>
 <div data-bind="inspect: $root, pinToTop: 'left'"></div>
 {% endhighlight %}
