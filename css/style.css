@@ -100,6 +100,7 @@ body {
 	line-height: 1.5;
 	font-style: italic;
 	margin-right: 10px;
+	float: left;
 }
 
 .post img {
@@ -137,4 +138,8 @@ ul {
 	padding-left: 10px;
 	margin: 10px;
 	list-style: disc;
+}
+
+#disqus_thread {
+	margin-top: 70px;
 }
