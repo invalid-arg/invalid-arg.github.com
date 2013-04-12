@@ -22,6 +22,10 @@ body {
 	height: 4rem;
 }
 
+#name img {
+	width: 64px;
+}
+
 #name h1, #name h2 {
 	display: none;
 }
@@ -142,4 +146,13 @@ ul {
 
 #disqus_thread {
 	margin-top: 70px;
+}
+
+@media screen and (min-width: 1px) and (max-width: 767px) {
+	#name {
+		width: 128px;
+		margin-bottom: 20px;
+	}
+	#name img {
+		width: 128px;
 }
