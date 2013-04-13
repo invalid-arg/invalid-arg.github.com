@@ -61,3 +61,5 @@ alert(obj.value); // value = 2
 That way you'll always have access to the object, no matter how far down your function calls go. I know its a requirement on JQuery but it all seems to work fine.
 
 I'm hoping somebody wiser than me can confirm why this might be a bad idea. Because it feels like it should be.
+
+**Edit:** Credit should go to [@robwesterlund](https://twitter.com/robwesterlund) for this thinking. You'll find him in [Jabbr](http://jabbr.net)
