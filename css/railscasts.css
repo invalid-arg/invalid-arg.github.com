@@ -52,7 +52,7 @@ railscasts .codecolorer
 .highlight { background-color: #2B2B2B; color: #E6E1DC;}
 .highlight .c { color: #bc9458; font-style: italic } /* Comment */
 .highlight .err { color: #ffc66d } /* Error */
-.highlight .k { color: #CC7833 } /* Keyword */
+.highlight .k { color: #cfcffe } /* Keyword */
 .highlight .n { color: #ffffff } /* Name */
 .highlight .o { color: #ffffff } /* Operator */
 .highlight .p { color: #ffffff } /* Punctuation */
