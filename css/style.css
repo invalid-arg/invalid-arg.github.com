@@ -148,6 +148,12 @@ ul {
 	margin-top: 70px;
 }
 
+.twitter-follow-button {
+	position: fixed;
+	top:8px;
+	right: 8px;
+}
+
 @media screen and (min-width: 1px) and (max-width: 767px) {
 	#name {
 		width: 128px;
@@ -156,3 +162,4 @@ ul {
 	#name img {
 		width: 128px;
 }
+
