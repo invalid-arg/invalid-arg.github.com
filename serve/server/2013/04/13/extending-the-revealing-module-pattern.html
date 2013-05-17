@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Invalid Argument</title>
+		<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" media="all" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+		<!-- <link rel="stylesheet" type="text/css" media="all" href="/css/pygments.css" /> -->
+		<link rel="stylesheet" type="text/css" media="all" href="/css/railscasts.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<a href="/"> 
+		    	<div id="name">
+						<img src="/img/avatar.png" />
+		      	<h1>Invalid Argument</h1> 
+		      	<h2>Mathew McLoughlin</h2>
+		    	</div>
+		  	</a>
+			</header>
+			<div id="content">
+				<div class="post">
+	<h3><a href="/2013/04/13/extending-the-revealing-module-pattern.html">Extending the Revealing Module Pattern</a></h3>
+	<div class="description">
+	<p>Somebody needs to tell me why this is a bad idea as I feel it should be.</p>
+
+<p>Most people working with javascript should be aware of the revealing module pattern, but if you&#8217;re not here&#8217;s a quick <a href='http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript'>example</a>. The idea is to create a javascript object where only the methods and variables you want accessible are public. This is achieved by defining all your functions and variables in a private scope (or function) and then return an object with pointers to the ones you want publicly accessible.</p>
+
+<p>However one thing I&#8217;ve found is it can be tricky to deal with &#8216;this&#8217; when things get complicated. For example, in the code below you have to use call to set the value variable.</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>myConstructor</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
+	
+  <span class='kd'>var</span> <span class='nx'>foo</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
+    <span class='nx'>bar</span><span class='p'>.</span><span class='nx'>call</span><span class='p'>(</span><span class='k'>this</span><span class='p'>);</span>
+  <span class='p'>};</span>
+  
+  <span class='kd'>var</span> <span class='nx'>bar</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{;</span>
+    <span class='k'>this</span><span class='p'>.</span><span class='nx'>value</span> <span class='o'>=</span> <span class='mi'>2</span><span class='p'>;</span> 
+  <span class='p'>};</span>
+  
+  <span class='k'>return</span> <span class='p'>{</span>
+    <span class='nx'>foo</span><span class='o'>:</span> <span class='nx'>foo</span><span class='p'>,</span>
+    <span class='nx'>value</span><span class='o'>:</span> <span class='mi'>1</span>
+  <span class='p'>};</span>
+<span class='p'>};</span>
+
+<span class='kd'>var</span> <span class='nx'>obj</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>myConstructor</span><span class='p'>();</span>
+<span class='nx'>alert</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>.</span><span class='nx'>value</span><span class='p'>);</span> <span class='c1'>// value = 1</span>
+<span class='nx'>obj</span><span class='p'>.</span><span class='nx'>foo</span><span class='p'>();</span>
+<span class='nx'>alert</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>.</span><span class='nx'>value</span><span class='p'>);</span> <span class='c1'>// value = 2</span>
+</code></pre></div>
+<p>This becomes even more of a pain when you start with callbacks. So to get round the problem. Is it not better to do this?</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>myConstructor</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
+  <span class='kd'>var</span> <span class='nx'>self</span> <span class='o'>=</span> <span class='k'>this</span><span class='p'>;</span>
+	
+  <span class='kd'>var</span> <span class='nx'>foo</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
+    <span class='nx'>bar</span><span class='p'>();</span>
+  <span class='p'>};</span>
+  
+  <span class='kd'>var</span> <span class='nx'>bar</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{;</span>
+    <span class='nx'>self</span><span class='p'>.</span><span class='nx'>value</span> <span class='o'>=</span> <span class='mi'>2</span><span class='p'>;</span> 
+  <span class='p'>};</span>
+  
+  <span class='k'>return</span> <span class='nx'>$</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>self</span><span class='p'>,</span> <span class='p'>{</span>
+    <span class='nx'>foo</span><span class='o'>:</span> <span class='nx'>foo</span><span class='p'>,</span>
+    <span class='nx'>value</span><span class='o'>:</span> <span class='mi'>1</span>
+  <span class='p'>});</span>
+<span class='p'>};</span>
+
+<span class='kd'>var</span> <span class='nx'>obj</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>myConstructor</span><span class='p'>();</span>
+<span class='nx'>alert</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>.</span><span class='nx'>value</span><span class='p'>);</span> <span class='c1'>// value = 1</span>
+<span class='nx'>obj</span><span class='p'>.</span><span class='nx'>foo</span><span class='p'>();</span>
+<span class='nx'>alert</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>.</span><span class='nx'>value</span><span class='p'>);</span> <span class='c1'>// value = 2</span>
+</code></pre></div>
+<p>That way you&#8217;ll always have access to the object, no matter how far down your function calls go. I know its a requirement on JQuery but it all seems to work fine.</p>
+
+<p>I&#8217;m hoping somebody wiser than me can confirm why this might be a bad idea. Because it feels like it should be.</p>
+
+<p><strong>Edit:</strong> Credit should go to <a href='https://twitter.com/robwesterlund'>@robwesterlund</a> for this thinking. You&#8217;ll find him in <a href='http://jabbr.net'>Jabbr</a></p>
+	</div>
+	<div class="post-footer">
+		<span class="date">April 13, 2013</span>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/04/13/extending-the-revealing-module-pattern.html" data-text="Extending the Revealing Module Pattern" data-via="invalid_arg">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+	<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+ 
+</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-1746767-6']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+		<a href="https://twitter.com/invalid_arg" class="twitter-follow-button" data-show-count="false">Follow @invalid_arg</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	</body>
+</html>

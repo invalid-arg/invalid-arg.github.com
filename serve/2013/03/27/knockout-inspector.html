@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Invalid Argument</title>
+		<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" media="all" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+		<!-- <link rel="stylesheet" type="text/css" media="all" href="/css/pygments.css" /> -->
+		<link rel="stylesheet" type="text/css" media="all" href="/css/railscasts.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<a href="/"> 
+		    	<div id="name">
+						<img src="/img/avatar.png" />
+		      	<h1>Invalid Argument</h1> 
+		      	<h2>Mathew McLoughlin</h2>
+		    	</div>
+		  	</a>
+			</header>
+			<div id="content">
+				<div class="post">
+	<h3><a href="/2013/03/27/knockout-inspector.html">Knockout Inspector</a></h3>
+	<div class="description">
+	<p>(I&#8217;ve changed the name to knockout inspector).</p>
+
+<p>So I&#8217;ve finally got my knockout inspector in a state where it can be used. It&#8217;s already helped me solve some bugs and performance problems. Maybe it will help you.</p>
+
+<p>It shows the underlying view model and properties, and any updates to those values. It&#8217;s great if you have observables that aren&#8217;t present in the view. Observables are in black and non-observables are in grey</p>
+
+<p><img src='/img/knockout-inspector.png' alt='knockout inspector' /></p>
+
+<p>The red and green counters, next to the observables, show the number of value changes and subscribers respectively. Its useful to bear in mind that if an observable is bound to a DOM element this will add a subscriber to the count.</p>
+
+<p>All the nodes in the tree are collapsable.</p>
+
+<p>Its really simple to use. No need for a nuget package or external references (such as jquery). You don&#8217;t even have to download any code just add this to your page:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>src=</span><span class='s'>&quot;http://invalid-arg.github.com/ko-inspector.js&quot;</span> <span class='na'>data-inspect=</span><span class='s'>&quot;observable: &#39;$root&#39;, pinToTop: &#39;left&#39;&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<ul>
+<li><strong>observable</strong> is the observable you want to inspect (more often than not this will be $root).</li>
+
+<li><strong>pinToTop</strong> will fix the view to the top of the page, either left or right. if you want the content to be inline just omit this.</li>
+</ul>
+
+<p>And thats it!</p>
+
+<p>If you want to use it in the traditional fashion or this method isn&#8217;t working for you, try the code below:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>src=</span><span class='s'>&quot;http://invalid-arg.github.com/ko-inspector.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-bind=</span><span class='s'>&quot;inspect: $root, pinToTop: &#39;left&#39;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
+</code></pre></div>
+<p>I&#8217;ve also added it to rob conery&#8217;s knockout cart as a demo <a href='http://invalid-arg.github.com/knockout-cart/example.html'>here</a> and you can download the file <a target='_blank' href='http://invalid-arg.github.com/ko-inspector.js'>here</a>.</p>
+	</div>
+	<div class="post-footer">
+		<span class="date">March 27, 2013</span>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/03/27/knockout-inspector.html" data-text="Knockout Inspector" data-via="invalid_arg">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</div>
+	<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+ 
+</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-1746767-6']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+		<a href="https://twitter.com/invalid_arg" class="twitter-follow-button" data-show-count="false">Follow @invalid_arg</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	</body>
+</html>
