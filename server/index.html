@@ -23,6 +23,45 @@
 				
 	<div class="normal">
 		<div class="post">
+			<h3><a href="/2013/05/16/when-you-shouldnt-test.html">When you Shouldn't Bother Testing</a></h3>
+			<div class="description">
+				<img src='/img/why-you-no-test.jpg' style='width:400px;margin-left:auto;margin-right:auto;display:block;' />
+<p>TDD is the way to go, I&#8217;m absolutely sure of it. It brings more benefits than you might first think. As well as the simple fact that your code will be more reliable, it forces you to write your code in a way that is testable, which in turn will make it loosely coupled and modular. It forces you to think about what you want your code to do before you start writing it. It brings other additional benefits that I won&#8217;t bother to mention, suffice to say theres no excuse for not using it in modern development.</p>
+
+<p>However, there a couple of reasons when you shouldn&#8217;t even bother with unit tests:</p>
+
+<h1 id='if_you_dont_know_the_language_well'>If you don&#8217;t know the language well</h1>
+
+<p>Don&#8217;t even bother with unit tests at this point. Your code will change so much as you learn, its best just to leave the tests all together until you get a better grasp on the language.</p>
+
+<h1 id='you_dont_know_the_domain_well'>You don&#8217;t know the domain well</h1>
+
+<p>Again its a similar thing, chances are you won&#8217;t have a good enough idea of how your solution will work. Again, as above, your code will change so much that its going to waste too much time testing.</p>
+
+<h1 id='you_dont_know_the_framework_you_are_using'>You don&#8217;t know the framework you are using</h1>
+
+<p>The first few weeks/months of using a new framework you&#8217;ll do most things wrong and then end up having to re-write lots of code. Your unit tests will get broken all the time and probably all need to be re-written as your learn how to layout your code better.</p>
+
+<p>In short unit tests will be more hinderance than help if there is a lot of prototyping and learning in your application. In cases like this your best doing away with the tests and just writing the code. Wait until your code starts to stabilise and then go back and review the situation then.</p>
+
+<p>As much as unit tests give you flexibility by allowing you to change code quickly with more assurance that you won&#8217;t break anything inadvertently. It can also really slow down prototyping and rapid development if you don&#8217;t have an understanding of your environment.</p>
+
+<p>The reason I mention this is so many tutorials and advice on the internet tell you to not write a line of code until you&#8217;ve written a test. I think you need to be a little more pragmatic about it.</p>
+
+<p>On another note. If you wanna learn how to TDD the proper way watch <a href='http://tekpub.com/productions/ft_tdd_wilson'>this</a> from <a href='https://twitter.com/bradwilson'>@bradwilson</a> an <a href='https://twitter.com/robconery'>@robconery</a></p>
+			</div>
+			<div class="post-footer">
+				<span class="date">May 16, 2013</span>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/05/16/when-you-shouldnt-test.html" data-text="When you Shouldn't Bother Testing" data-via="invalid_arg">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			<div class="clear:both;"></div>
+		</div>
+	</div>
+	<div class="tear"></div>
+
+	<div class="alternate">
+		<div class="post">
 			<h3><a href="/2013/04/22/custom-deferred-handlers.html">Custom JQuery Deferred Handlers</a></h3>
 			<div class="description">
 				<p>As the codebase at work gets bigger and bigger I&#8217;ve been trying to think of ways to simplify some of the simple create and update javascript functionality. Our application works by having a context that you can define a resource for then use to perform the CRUD functionality. For example:</p>
@@ -97,9 +136,9 @@
 			<div class="clear:both;"></div>
 		</div>
 	</div>
-	<div class="tear"></div>
+	<div class="tear-alternate"></div>
 
-	<div class="alternate">
+	<div class="normal">
 		<div class="post">
 			<h3><a href="/2013/04/13/extending-the-revealing-module-pattern.html">Extending the Revealing Module Pattern</a></h3>
 			<div class="description">
@@ -166,9 +205,9 @@
 			<div class="clear:both;"></div>
 		</div>
 	</div>
-	<div class="tear-alternate"></div>
+	<div class="tear"></div>
 
-	<div class="normal">
+	<div class="alternate">
 		<div class="post">
 			<h3><a href="/2013/04/10/403-error-and-dotnet-bundling.html">403 Error and .NET Bundling</a></h3>
 			<div class="description">
@@ -198,9 +237,9 @@
 			<div class="clear:both;"></div>
 		</div>
 	</div>
-	<div class="tear"></div>
+	<div class="tear-alternate"></div>
 
-	<div class="alternate">
+	<div class="normal">
 		<div class="post">
 			<h3><a href="/2013/04/01/mousetrap-bind-elements.html">Mousetrap Bind Elements</a></h3>
 			<div class="description">
@@ -223,49 +262,6 @@
 			<div class="post-footer">
 				<span class="date">April  1, 2013</span>
 				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/04/01/mousetrap-bind-elements.html" data-text="Mousetrap Bind Elements" data-via="invalid_arg">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div>
-			<div class="clear:both;"></div>
-		</div>
-	</div>
-	<div class="tear-alternate"></div>
-
-	<div class="normal">
-		<div class="post">
-			<h3><a href="/2013/03/27/knockout-inspector.html">Knockout Inspector</a></h3>
-			<div class="description">
-				<p>(I&#8217;ve changed the name to knockout inspector).</p>
-
-<p>So I&#8217;ve finally got my knockout inspector in a state where it can be used. It&#8217;s already helped me solve some bugs and performance problems. Maybe it will help you.</p>
-
-<p>It shows the underlying view model and properties, and any updates to those values. It&#8217;s great if you have observables that aren&#8217;t present in the view. Observables are in black and non-observables are in grey</p>
-
-<p><img alt='knockout inspector' src='/img/knockout-inspector.png' /></p>
-
-<p>The red and green counters, next to the observables, show the number of value changes and subscribers respectively. Its useful to bear in mind that if an observable is bound to a DOM element this will add a subscriber to the count.</p>
-
-<p>All the nodes in the tree are collapsable.</p>
-
-<p>Its really simple to use. No need for a nuget package or external references (such as jquery). You don&#8217;t even have to download any code just add this to your page:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>src=</span><span class='s'>&quot;http://invalid-arg.github.com/ko-inspector.js&quot;</span> <span class='na'>data-inspect=</span><span class='s'>&quot;observable: &#39;$root&#39;, pinToTop: &#39;left&#39;&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-</code></pre></div>
-<ul>
-<li><strong>observable</strong> is the observable you want to inspect (more often than not this will be $root).</li>
-
-<li><strong>pinToTop</strong> will fix the view to the top of the page, either left or right. if you want the content to be inline just omit this.</li>
-</ul>
-
-<p>And thats it!</p>
-
-<p>If you want to use it in the traditional fashion or this method isn&#8217;t working for you, try the code below:</p>
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>src=</span><span class='s'>&quot;http://invalid-arg.github.com/ko-inspector.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
-<span class='nt'>&lt;div</span> <span class='na'>data-bind=</span><span class='s'>&quot;inspect: $root, pinToTop: &#39;left&#39;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
-</code></pre></div>
-<p>I&#8217;ve also added it to rob conery&#8217;s knockout cart as a demo <a href='http://invalid-arg.github.com/knockout-cart/example.html'>here</a> and you can download the file <a href='http://invalid-arg.github.com/ko-inspector.js' target='_blank'>here</a>.</p>
-			</div>
-			<div class="post-footer">
-				<span class="date">March 27, 2013</span>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/03/27/knockout-inspector.html" data-text="Knockout Inspector" data-via="invalid_arg">Tweet</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</div>
 			<div class="clear:both;"></div>

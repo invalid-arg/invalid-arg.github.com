@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Invalid Argument</title>
+		<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" media="all" href="/css/reset.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" />
+		<!-- <link rel="stylesheet" type="text/css" media="all" href="/css/pygments.css" /> -->
+		<link rel="stylesheet" type="text/css" media="all" href="/css/railscasts.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<a href="/"> 
+		    	<div id="name">
+						<img src="/img/avatar.png" />
+		      	<h1>Invalid Argument</h1> 
+		      	<h2>Mathew McLoughlin</h2>
+		    	</div>
+		  	</a>
+			</header>
+			<div id="content">
+				
+	<div class="normal">
+		<div class="post">
+			<h3><a href="/2013/04/22/custom-deferred-handlers.html">Custom JQuery Deferred Handlers</a></h3>
+			<div class="description">
+				<p>As the codebase at work gets bigger and bigger I&#8217;ve been trying to think of ways to simplify some of the simple create and update javascript functionality. Our application works by having a context that you can define a resource for then use to perform the CRUD functionality. For example:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>fooContext</span> <span class='o'>=</span> <span class='nx'>context</span><span class='p'>.</span><span class='nx'>define</span><span class='p'>(</span><span class='s1'>&#39;foo&#39;</span><span class='p'>);</span>
+
+<span class='kd'>var</span> <span class='nx'>createButton</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
+  <span class='nx'>fooContext</span><span class='p'>.</span><span class='nx'>create</span><span class='p'>(</span><span class='nx'>foo</span><span class='p'>).</span><span class='nx'>then</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>(</span><span class='nx'>response</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='c1'>// Something has been created. Navigate off</span>
+  <span class='p'>})</span>
+<span class='p'>};</span>
+
+<span class='kd'>var</span> <span class='nx'>updateButton</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
+  <span class='nx'>fooContext</span><span class='p'>.</span><span class='nx'>update</span><span class='p'>(</span><span class='nx'>foo</span><span class='p'>).</span><span class='nx'>then</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>(</span><span class='nx'>response</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='c1'>// Something has been updated. Update message</span>
+  <span class='p'>})</span>
+<span class='p'>};</span>
+</code></pre></div>
+<p>Now there are a lot of objects in our application so this code appears a lot. So I figured I could combine in it in a similar way to a common pattern on the server side:</p>
+<div class='highlight'><pre><code class='js'><span class='k'>if</span> <span class='p'>(</span><span class='nx'>foo</span><span class='p'>.</span><span class='nx'>id</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='c1'>// update</span>
+<span class='p'>}</span> <span class='k'>else</span> <span class='p'>{</span>
+  <span class='c1'>// create</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>But I also wanted to handle the response differently as well. Now as the astute of you have may noticed I&#8217;m using the JQuery $.Deferred functionality. So I thought I&#8217;d create two custom deferred handlers. One for created and one for updated, and this is how I did it:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>save</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>item</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='kd'>var</span> <span class='nx'>isUpdate</span> <span class='o'>=</span> <span class='kc'>false</span><span class='p'>;</span>
+  <span class='kd'>var</span> <span class='nx'>deferred</span><span class='p'>;</span>
+
+  <span class='k'>if</span> <span class='p'>(</span><span class='nx'>item</span><span class='p'>.</span><span class='nx'>id</span> <span class='o'>&amp;&amp;</span> <span class='nx'>item</span><span class='p'>.</span><span class='nx'>id</span> <span class='o'>&gt;</span> <span class='mi'>0</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='nx'>isUpdate</span> <span class='o'>=</span> <span class='kc'>true</span><span class='p'>;</span>
+    <span class='nx'>deferred</span> <span class='o'>=</span> <span class='nx'>update</span><span class='p'>(</span><span class='nx'>item</span><span class='p'>);</span>
+  <span class='p'>}</span> <span class='k'>else</span> <span class='p'>{</span>
+    <span class='nx'>deferred</span> <span class='o'>=</span> <span class='nx'>create</span><span class='p'>(</span><span class='nx'>item</span><span class='p'>);</span>
+  <span class='p'>}</span>
+
+  <span class='c1'>// Additional handlers</span>
+  <span class='nx'>deferred</span><span class='p'>.</span><span class='nx'>created</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>callback</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='k'>if</span> <span class='p'>(</span><span class='o'>!</span><span class='nx'>isUpdate</span><span class='p'>)</span> <span class='p'>{</span>
+      <span class='nx'>deferred</span><span class='p'>.</span><span class='nx'>then</span><span class='p'>(</span><span class='nx'>callback</span><span class='p'>);</span>
+    <span class='p'>}</span>
+    <span class='nx'>deferred</span><span class='p'>;</span>
+  <span class='p'>};</span>
+
+  <span class='nx'>deferred</span><span class='p'>.</span><span class='nx'>updated</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>callback</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='k'>if</span> <span class='p'>(</span><span class='nx'>isUpdate</span><span class='p'>)</span> <span class='p'>{</span>
+      <span class='nx'>deferred</span><span class='p'>.</span><span class='nx'>then</span><span class='p'>(</span><span class='nx'>callback</span><span class='p'>);</span>
+    <span class='p'>}</span>
+    <span class='k'>return</span> <span class='nx'>deferred</span><span class='p'>;</span>
+  <span class='p'>};</span> 
+
+  <span class='k'>return</span> <span class='nx'>deferred</span><span class='p'>;</span>
+<span class='p'>};</span>
+</code></pre></div>
+<p>In the example the update and create functions are both deferred as well. This now allows me to write the above code as:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>fooContext</span> <span class='o'>=</span> <span class='nx'>context</span><span class='p'>.</span><span class='nx'>define</span><span class='p'>(</span><span class='s1'>&#39;foo&#39;</span><span class='p'>);</span>
+
+<span class='kd'>var</span> <span class='nx'>saveButton</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
+  <span class='nx'>fooContext</span><span class='p'>.</span><span class='nx'>save</span><span class='p'>(</span><span class='nx'>foo</span><span class='p'>).</span><span class='nx'>created</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>(</span><span class='nx'>response</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='c1'>// Something has been created. Navigate off</span>
+  <span class='p'>}).</span><span class='nx'>updated</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>(</span><span class='nx'>response</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='c1'>// Something has been updated. Update message</span>
+  <span class='p'>});</span>
+<span class='p'>};</span>
+</code></pre></div>
+			</div>
+			<div class="post-footer">
+				<span class="date">April 22, 2013</span>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/04/22/custom-deferred-handlers.html" data-text="Custom JQuery Deferred Handlers" data-via="invalid_arg">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			<div class="clear:both;"></div>
+		</div>
+	</div>
+	<div class="tear"></div>
+
+	<div class="alternate">
+		<div class="post">
+			<h3><a href="/2013/04/13/extending-the-revealing-module-pattern.html">Extending the Revealing Module Pattern</a></h3>
+			<div class="description">
+				<p>Somebody needs to tell me why this is a bad idea as I feel it should be.</p>
+
+<p>Most people working with javascript should be aware of the revealing module pattern, but if you&#8217;re not here&#8217;s a quick <a href='http://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript'>example</a>. The idea is to create a javascript object where only the methods and variables you want accessible are public. This is achieved by defining all your functions and variables in a private scope (or function) and then return an object with pointers to the ones you want publicly accessible.</p>
+
+<p>However one thing I&#8217;ve found is it can be tricky to deal with &#8216;this&#8217; when things get complicated. For example, in the code below you have to use call to set the value variable.</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>myConstructor</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
+	
+  <span class='kd'>var</span> <span class='nx'>foo</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
+    <span class='nx'>bar</span><span class='p'>.</span><span class='nx'>call</span><span class='p'>(</span><span class='k'>this</span><span class='p'>);</span>
+  <span class='p'>};</span>
+  
+  <span class='kd'>var</span> <span class='nx'>bar</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{;</span>
+    <span class='k'>this</span><span class='p'>.</span><span class='nx'>value</span> <span class='o'>=</span> <span class='mi'>2</span><span class='p'>;</span> 
+  <span class='p'>};</span>
+  
+  <span class='k'>return</span> <span class='p'>{</span>
+    <span class='nx'>foo</span><span class='o'>:</span> <span class='nx'>foo</span><span class='p'>,</span>
+    <span class='nx'>value</span><span class='o'>:</span> <span class='mi'>1</span>
+  <span class='p'>};</span>
+<span class='p'>};</span>
+
+<span class='kd'>var</span> <span class='nx'>obj</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>myConstructor</span><span class='p'>();</span>
+<span class='nx'>alert</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>.</span><span class='nx'>value</span><span class='p'>);</span> <span class='c1'>// value = 1</span>
+<span class='nx'>obj</span><span class='p'>.</span><span class='nx'>foo</span><span class='p'>();</span>
+<span class='nx'>alert</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>.</span><span class='nx'>value</span><span class='p'>);</span> <span class='c1'>// value = 2</span>
+</code></pre></div>
+<p>This becomes even more of a pain when you start with callbacks. So to get round the problem. Is it not better to do this?</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>myConstructor</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
+  <span class='kd'>var</span> <span class='nx'>self</span> <span class='o'>=</span> <span class='k'>this</span><span class='p'>;</span>
+	
+  <span class='kd'>var</span> <span class='nx'>foo</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
+    <span class='nx'>bar</span><span class='p'>();</span>
+  <span class='p'>};</span>
+  
+  <span class='kd'>var</span> <span class='nx'>bar</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{;</span>
+    <span class='nx'>self</span><span class='p'>.</span><span class='nx'>value</span> <span class='o'>=</span> <span class='mi'>2</span><span class='p'>;</span> 
+  <span class='p'>};</span>
+  
+  <span class='k'>return</span> <span class='nx'>$</span><span class='p'>.</span><span class='nx'>extend</span><span class='p'>(</span><span class='nx'>self</span><span class='p'>,</span> <span class='p'>{</span>
+    <span class='nx'>foo</span><span class='o'>:</span> <span class='nx'>foo</span><span class='p'>,</span>
+    <span class='nx'>value</span><span class='o'>:</span> <span class='mi'>1</span>
+  <span class='p'>});</span>
+<span class='p'>};</span>
+
+<span class='kd'>var</span> <span class='nx'>obj</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nx'>myConstructor</span><span class='p'>();</span>
+<span class='nx'>alert</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>.</span><span class='nx'>value</span><span class='p'>);</span> <span class='c1'>// value = 1</span>
+<span class='nx'>obj</span><span class='p'>.</span><span class='nx'>foo</span><span class='p'>();</span>
+<span class='nx'>alert</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>.</span><span class='nx'>value</span><span class='p'>);</span> <span class='c1'>// value = 2</span>
+</code></pre></div>
+<p>That way you&#8217;ll always have access to the object, no matter how far down your function calls go. I know its a requirement on JQuery but it all seems to work fine.</p>
+
+<p>I&#8217;m hoping somebody wiser than me can confirm why this might be a bad idea. Because it feels like it should be.</p>
+
+<p><strong>Edit:</strong> Credit should go to <a href='https://twitter.com/robwesterlund'>@robwesterlund</a> for this thinking. You&#8217;ll find him in <a href='http://jabbr.net'>Jabbr</a></p>
+			</div>
+			<div class="post-footer">
+				<span class="date">April 13, 2013</span>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/04/13/extending-the-revealing-module-pattern.html" data-text="Extending the Revealing Module Pattern" data-via="invalid_arg">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			<div class="clear:both;"></div>
+		</div>
+	</div>
+	<div class="tear-alternate"></div>
+
+	<div class="normal">
+		<div class="post">
+			<h3><a href="/2013/04/10/403-error-and-dotnet-bundling.html">403 Error and .NET Bundling</a></h3>
+			<div class="description">
+				<p>Came across this one the other day whilst using the .NET bundling functionality. All was fine in debug mode but as soon as I pushed it to production everything went pear shaped. The combined file kept returning a 403 error.</p>
+
+<p>After a bit of prodding around it turned out the problem was due to me naming my bundle the same as the directory I kept my files in. So this:</p>
+<div class='highlight'><pre><code class='csharp'><span class='kt'>var</span> <span class='n'>bundle</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>Bundle</span><span class='p'>(</span><span class='s'>&quot;~/Scripts&quot;</span><span class='p'>);</span>
+<span class='n'>bundle</span><span class='p'>.</span><span class='n'>AddFile</span><span class='p'>(</span><span class='s'>&quot;~/Scripts/jquery-1.6.2.js&quot;</span><span class='p'>);</span>
+<span class='n'>bundle</span><span class='p'>.</span><span class='n'>AddFile</span><span class='p'>(</span><span class='s'>&quot;~/Scripts/jquery-ui-1.8.11.js&quot;</span><span class='p'>);</span>
+<span class='n'>bundle</span><span class='p'>.</span><span class='n'>AddFile</span><span class='p'>(</span><span class='s'>&quot;~/Scripts/modernizr-2.0.6-development-only.js&quot;</span><span class='p'>);</span>
+<span class='n'>BundleTable</span><span class='p'>.</span><span class='n'>Bundles</span><span class='p'>.</span><span class='n'>Add</span><span class='p'>(</span><span class='n'>bundle</span><span class='p'>);</span> 
+</code></pre></div>
+<p>won&#8217;t work. However this:</p>
+<div class='highlight'><pre><code class='csharp'><span class='kt'>var</span> <span class='n'>bundle</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>Bundle</span><span class='p'>(</span><span class='s'>&quot;~/MyScripts&quot;</span><span class='p'>);</span>
+<span class='n'>bundle</span><span class='p'>.</span><span class='n'>AddFile</span><span class='p'>(</span><span class='s'>&quot;~/Scripts/jquery-1.6.2.js&quot;</span><span class='p'>);</span>
+<span class='n'>bundle</span><span class='p'>.</span><span class='n'>AddFile</span><span class='p'>(</span><span class='s'>&quot;~/Scripts/jquery-ui-1.8.11.js&quot;</span><span class='p'>);</span>
+<span class='n'>bundle</span><span class='p'>.</span><span class='n'>AddFile</span><span class='p'>(</span><span class='s'>&quot;~/Scripts/modernizr-2.0.6-development-only.js&quot;</span><span class='p'>);</span>
+<span class='n'>BundleTable</span><span class='p'>.</span><span class='n'>Bundles</span><span class='p'>.</span><span class='n'>Add</span><span class='p'>(</span><span class='n'>bundle</span><span class='p'>);</span>
+</code></pre></div>
+<p>will. Not the most useful error message but problem solved none the less.</p>
+			</div>
+			<div class="post-footer">
+				<span class="date">April 10, 2013</span>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/04/10/403-error-and-dotnet-bundling.html" data-text="403 Error and .NET Bundling" data-via="invalid_arg">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			<div class="clear:both;"></div>
+		</div>
+	</div>
+	<div class="tear"></div>
+
+	<div class="alternate">
+		<div class="post">
+			<h3><a href="/2013/04/01/mousetrap-bind-elements.html">Mousetrap Bind Elements</a></h3>
+			<div class="description">
+				<p>Shortcut keys are becoming more and more important in today&#8217;s web, and libraries like <a href='http://craig.is/killing/mice'>mousetrap</a> are a god send when you want to implement them on your site. It allows you to assign various shortcut keys to callback functions. It even allows key combinations.</p>
+
+<p>To help simplify the implementation I&#8217;ve written an extension that will automatically bind the click event of DOM element to a shortcut key, using a data attribute. For example:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;a</span> <span class='na'>href=</span><span class='s'>&quot;http://www.stackoverflow.com&quot;</span> <span class='na'>data-mousetrap=</span><span class='s'>&quot;ctrl+s&quot;</span><span class='nt'>&gt;</span>Stack Overflow<span class='nt'>&lt;/a&gt;</span>
+</code></pre></div>
+<p>I&#8217;ve set up a couple of <a href='/examples/mousetrapBindElements.html'>examples</a> to demonstrate it.</p>
+
+<p>As an added bonus my library allows you to bind a key to show all the shortcuts available. Simple to do via:</p>
+<div class='highlight'><pre><code class='js'><span class='nx'>Mousetrap</span><span class='p'>.</span><span class='nx'>bindPopup</span><span class='p'>(</span><span class='s1'>&#39;ctrl+;&#39;</span><span class='p'>);</span>
+</code></pre></div>
+<p>The popups can be styled via the .mousetrap-popup style.</p>
+
+<p>I&#8217;m going to implement a feedly style popup when I&#8217;ve got time but that&#8217;s it for now.</p>
+
+<p><a href='https://github.com/invalid-arg/mousetrap.bindElements'>GitHub</a></p>
+			</div>
+			<div class="post-footer">
+				<span class="date">April  1, 2013</span>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/04/01/mousetrap-bind-elements.html" data-text="Mousetrap Bind Elements" data-via="invalid_arg">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			<div class="clear:both;"></div>
+		</div>
+	</div>
+	<div class="tear-alternate"></div>
+
+	<div class="normal">
+		<div class="post">
+			<h3><a href="/2013/03/27/knockout-inspector.html">Knockout Inspector</a></h3>
+			<div class="description">
+				<p>(I&#8217;ve changed the name to knockout inspector).</p>
+
+<p>So I&#8217;ve finally got my knockout inspector in a state where it can be used. It&#8217;s already helped me solve some bugs and performance problems. Maybe it will help you.</p>
+
+<p>It shows the underlying view model and properties, and any updates to those values. It&#8217;s great if you have observables that aren&#8217;t present in the view. Observables are in black and non-observables are in grey</p>
+
+<p><img alt='knockout inspector' src='/img/knockout-inspector.png' /></p>
+
+<p>The red and green counters, next to the observables, show the number of value changes and subscribers respectively. Its useful to bear in mind that if an observable is bound to a DOM element this will add a subscriber to the count.</p>
+
+<p>All the nodes in the tree are collapsable.</p>
+
+<p>Its really simple to use. No need for a nuget package or external references (such as jquery). You don&#8217;t even have to download any code just add this to your page:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>src=</span><span class='s'>&quot;http://invalid-arg.github.com/ko-inspector.js&quot;</span> <span class='na'>data-inspect=</span><span class='s'>&quot;observable: &#39;$root&#39;, pinToTop: &#39;left&#39;&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+</code></pre></div>
+<ul>
+<li><strong>observable</strong> is the observable you want to inspect (more often than not this will be $root).</li>
+
+<li><strong>pinToTop</strong> will fix the view to the top of the page, either left or right. if you want the content to be inline just omit this.</li>
+</ul>
+
+<p>And thats it!</p>
+
+<p>If you want to use it in the traditional fashion or this method isn&#8217;t working for you, try the code below:</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;script </span><span class='na'>src=</span><span class='s'>&quot;http://invalid-arg.github.com/ko-inspector.js&quot;</span><span class='nt'>&gt;&lt;/script&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-bind=</span><span class='s'>&quot;inspect: $root, pinToTop: &#39;left&#39;&quot;</span><span class='nt'>&gt;&lt;/div&gt;</span>
+</code></pre></div>
+<p>I&#8217;ve also added it to rob conery&#8217;s knockout cart as a demo <a href='http://invalid-arg.github.com/knockout-cart/example.html'>here</a> and you can download the file <a href='http://invalid-arg.github.com/ko-inspector.js' target='_blank'>here</a>.</p>
+			</div>
+			<div class="post-footer">
+				<span class="date">March 27, 2013</span>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://invalid-arg.github.io/2013/03/27/knockout-inspector.html" data-text="Knockout Inspector" data-via="invalid_arg">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+			<div class="clear:both;"></div>
+		</div>
+	</div>
+	<div class="tear"></div>
+	
+
+			</div>
+		</div>
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-1746767-6']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+		<a href="https://twitter.com/invalid_arg" class="twitter-follow-button" data-show-count="false">Follow @invalid_arg</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	</body>
+</html>

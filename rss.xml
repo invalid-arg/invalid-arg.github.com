@@ -1,0 +1,24 @@
+---
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Invalid Argument</title>
+    <description>Powered by Beard</description>
+    <link>http://invalid-arg.github.io</link>
+    <pubDate>{{ site.time | date: "%a, %d %b %Y 00:00:00 GMT" }}</pubDate>
+    <copyright>Copyright (c) 2013 Mathew McLoughlin</copyright>
+    <atom:link href="http://invalid-arg.github.io/rss.xml" rel="self" type="application/rss+xml" />
+    {% for post in site.posts %}
+    {% unless post.draft %}
+    <item>
+      <title>{{ post.title | xml_escape }}</title>
+      <description>{{ post.content | xml_escape }}</description>
+      <link>http://invalid-arg.github.io{{ post.url }}/</link>
+      <guid isPermaLink="true">http://invalid-arg.github.io{{ post.url }}/</guid>
+      <pubDate>{{ post.date | date: "%a, %d %b %Y 00:00:00 GMT" }}</pubDate>
+    </item>
+    {% endunless %}
+    {% endfor %}
+  </channel>
+</rss>

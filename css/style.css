@@ -42,15 +42,15 @@ body {
 	padding-bottom: 65px;
 }
 
-.tear {
-	background: url('/img/tear.png') repeat-x bottom;
+/*.tear {
+	background: url('/img/tear.jpg') repeat-x bottom;
 	height: 54px;
 }
 
 .tear-alternate {
 	background: url('/img/tear-alternate.png') repeat-x bottom;
 	height: 54px;
-}
+}*/
 
 .alternate {
 	background: #e4e4e4;
@@ -62,14 +62,30 @@ body {
 	line-height: 1.25;
 	font-weight: bold;
 	margin-bottom: 65px;
-	background-color: black;
+	/*background-color: black;
 	color: transparent;
-	text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.3);
+	text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.3);*/
 	-webkit-background-clip: text;
 	-moz-background-clip: text;
 	background-clip: text;
 	text-align: center;
 }
+
+/*@media (max-width: 1000px) and (min-width: 500px) {
+	.post h3 {
+		font-size: 50px;
+		line-height: 57px;
+		margin-bottom: 45px;
+	}
+}
+
+@media (max-width: 500px) and (min-width: 0) {
+	.post h3 {
+		font-size: 31px;
+		line-height: 35px;
+		margin: 5px 0 30px;
+	}
+}*/
 
 .post h3 a {
 	text-decoration: none;
@@ -77,7 +93,7 @@ body {
 }
 
 .post h3 a:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .post .description {
@@ -89,6 +105,22 @@ body {
 .post .description p {
 	margin-bottom: 1rem;
 }
+
+/*@media (max-width: 1000px) and (min-width: 500px) {
+	.post .description p {
+		font-size: 23px;
+		line-height: 34px;
+		margin-bottom: 40px;
+	}
+}
+
+@media (max-width: 500px) and (min-width: 0px) {
+	.post .description p {
+		font-size: 19px;
+		line-height: 29px;
+		margin-bottom: 30px;
+	}
+}*/
 
 .post .post-footer {
 		margin-top: 16px;
