@@ -11,4 +11,4 @@ The green number now shows how many subscribers the observable has, which is goo
 
 In addition to this I've embedded the stylesheet in the javascript. As this is debugging tool I wanted to make it as easy as possible to get running. Now you only have to add reference to the js file.
 
-Check it out on [github](https://github.com/invalid-arg/jsonViewer) or the [examples](http://jsfiddle.net/mjmcloug/4F4VX/9/) with subscribers.	
+Check it out on [github](https://github.com/mat-mcloughlin/jsonViewer) or the [examples](http://jsfiddle.net/mjmcloug/4F4VX/9/) with subscribers.	

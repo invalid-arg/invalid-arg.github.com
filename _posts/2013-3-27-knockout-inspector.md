@@ -18,7 +18,7 @@ All the nodes in the tree are collapsable.
 Its really simple to use. No need for a nuget package or external references (such as jquery). You don't even have to download any code just add this to your page:
 
 {% highlight html linenos %}
-<script src="http://invalid-arg.github.com/ko-inspector.js" data-inspect="observable: '$root', pinToTop: 'left'"></script>
+<script src="http://mat-mcloughlin.github.com/ko-inspector.js" data-inspect="observable: '$root', pinToTop: 'left'"></script>
 {% endhighlight %}
 
 * __observable__ is the observable you want to inspect (more often than not this will be $root).
@@ -29,8 +29,8 @@ And thats it!
 If you want to use it in the traditional fashion or this method isn't working for you, try the code below:
 
 {% highlight html linenos=table %}
-<script src="http://invalid-arg.github.com/ko-inspector.js"></script>
+<script src="http://mat-mcloughlin.github.com/ko-inspector.js"></script>
 <div data-bind="inspect: $root, pinToTop: 'left'"></div>
 {% endhighlight %}
 
-I've also added it to rob conery's knockout cart as a demo [here](http://invalid-arg.github.com/knockout-cart/example.html) and you can download the file <a href="http://invalid-arg.github.com/ko-inspector.js" target="_blank">here</a>.
+I've also added it to rob conery's knockout cart as a demo [here](http://mat-mcloughlin.github.com/knockout-cart/example.html) and you can download the file <a href="http://mat-mcloughlin.github.com/ko-inspector.js" target="_blank">here</a>.
