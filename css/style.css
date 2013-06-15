@@ -11,6 +11,8 @@ body {
 .wrapper header {
 	display: block;
 	padding: 1.5rem 0 1rem 0;
+	margin: 0 auto;
+	max-width: 760px;
 }
 
 #name {
@@ -18,8 +20,8 @@ body {
 	background-size: 4rem 4rem;
 	width: 64px;
 	border-radius:25px;
-	margin: 0 auto;
 	height: 4rem;
+	float: left;
 }
 
 #name img {
@@ -28,6 +30,51 @@ body {
 
 #name h1, #name h2 {
 	display: none;
+}
+
+#social {
+	float: right;
+	margin-top: 18px;
+}
+
+#social a {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	text-indent: -9999px;
+	margin-right: 15px;
+	width: 28px;
+	height: 28px;
+}
+
+#social a:hover {
+	cursor: pointer;
+}
+
+#social a.twitter {
+	background: url('../img/twitter.png') center no-repeat;
+	background-color: #70cdf5;
+	border: 1px solid #70cdf5;
+}
+
+#social a.github {
+	background: url('../img/github.png') center no-repeat #AFB6CA;
+	border: 1px solid #AFB6CA;
+}
+
+#social a.rss {
+	background: url('../img/rss.png') center no-repeat #EF7522;
+	border: 1px solid #EF7522;
+}
+
+h2 {
+	margin-top: 1.5rem;
 }
 
 #content {
@@ -57,11 +104,11 @@ body {
 }
 
 .post h3 {
-	font-size: 66px;
+	font-size: 44px;
 	font-family: 'Helvetica Neue', Helvetica, pragmatica-web, Arial, sans-serif;
-	line-height: 1.25;
+	line-height: 1.1;
 	font-weight: bold;
-	margin-bottom: 65px;
+	margin-bottom: 44px;
 	/*background-color: black;
 	color: transparent;
 	text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.3);*/
@@ -98,7 +145,7 @@ body {
 
 .post .description {
 	line-height: 1.5;
-	font-size: 26px;
+	font-size: 18px;
 	font-family: ff-meta-serif-web-pro, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -142,8 +189,8 @@ body {
 .post img {
 	border: 1px solid #ccc;
 	width: 100%;
-	margin-bottom: 2.13rem;
-	margin-top: 2.13rem;
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
 }
 
 a {
@@ -163,8 +210,8 @@ code {
 }
 
 pre	{
-	margin-top: 2.5rem;
-	margin-bottom: 2.5rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 	border-left: 2px #1C3FFD solid;
 	padding-left: 10px;
 	
@@ -186,12 +233,4 @@ ul {
 	right: 8px;
 }
 
-@media screen and (min-width: 1px) and (max-width: 767px) {
-	#name {
-		width: 128px;
-		margin-bottom: 20px;
-	}
-	#name img {
-		width: 128px;
-}
 

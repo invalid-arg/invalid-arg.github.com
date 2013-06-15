@@ -3,7 +3,7 @@ layout: post
 title: When you Shouldn't Bother Testing
 ---
 
-<img src="/img/why-you-no-test.jpg" style="width:400px;margin-left:auto;margin-right:auto;display:block;" />
+<p><img src="/img/why-you-no-test.jpg" style="width:400px;margin-left:auto;margin-right:auto;display:block;" /></p>
 
 TDD is the way to go, I'm absolutely sure of it. It brings more benefits than you might first think. As well as the simple fact that your code will be more reliable, it forces you to write your code in a way that is testable, which in turn will make it loosely coupled and modular. It forces you to think about what you want your code to do before you start writing it. It brings other additional benefits that I won't bother to mention, suffice to say theres no excuse for not using it in modern development.
 		
