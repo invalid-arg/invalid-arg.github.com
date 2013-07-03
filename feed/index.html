@@ -2,11 +2,11 @@
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title type="text" xml:lang="en">Invalid Argument</title>
-    <link type="application/atom+xml" href="http://invalid-arg.github.io/feed/" rel="self"/>
-    <link type="text/html" href="http://invalid-arg.github.io" rel="alternate"/>
+    <title type="text" xml:lang="en">Mat McLoughlin</title>
+    <link type="application/atom+xml" href="http://mat-mcloughlin.github.io/feed/" rel="self"/>
+    <link type="text/html" href="http://mat-mcloughlin.github.io" rel="alternate"/>
     <updated>{{ site.time | date_to_xmlschema }}</updated>
-    <id>http://invalid-arg.github.io/</id>
+    <id>http://mat-mcloughlin.github.io/</id>
     <author>
         <name>Mathew McLoughlin</name>
     </author>
@@ -15,9 +15,9 @@
     {% unless post.draft %}
     <entry>
         <title>{{ post.title }}</title>
-        <link href="http://invalid-arg.github.io{{ post.url }}/"/>
+        <link href="http://mat-mcloughlin.github.io{{ post.url }}/"/>
         <updated>{{ post.date | date_to_xmlschema }}</updated>
-        <id>http://invalid-arg.github.io{{ post.url }}/</id>
+        <id>http://mat-mcloughlin.github.io{{ post.url }}/</id>
         <summary type="html">{{ post.content | xml_escape }}</summary>
     </entry>
     {% endunless %}

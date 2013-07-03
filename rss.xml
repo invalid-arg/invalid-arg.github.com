@@ -3,7 +3,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Invalid Argument</title>
+    <title>Mat McLoughlin</title>
     <description>Powered by Beard</description>
     <link>http://mat-mcloughlin.github.io</link>
     <pubDate>{{ site.time | date: "%a, %d %b %Y 00:00:00 GMT" }}</pubDate>
