@@ -3,7 +3,6 @@ layout: post
 title: Another Reason you should be doing TDD
 ---
 
-
 I've been to NDC this week. If you get the opportunity I highly recommend it. 
 
 <p><img src="/img/bob-martin.jpg" style="width:637px;margin-left:auto;margin-right:auto;display:block;" /></p>
