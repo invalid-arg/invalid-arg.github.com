@@ -3,19 +3,17 @@ layout: layout
 ---
 
 {% for post in site.posts offset: 0 limit: 5 %}
-	<div class="{% cycle 'normal', 'alternate' %}">
-		<div class="post">
-			<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-			<div class="description">
-				{{ post.content }}
-			</div>
-			<div class="post-footer">
-				<span class="date">{{ post.date | date: "%B %e, %Y" }}</span>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}{{ post.url }}" data-text="{{ post.title }}" data-via="mat_mcloughlin">Tweet</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div>
-			<div class="clear:both;"></div>
+	<div class="post">
+		<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+		<div class="description">
+			{{ post.content }}
 		</div>
+		<div class="post-footer">
+			<span class="date">{{ post.date | date: "%B %e, %Y" }}</span>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}{{ post.url }}" data-text="{{ post.title }}" data-via="mat_mcloughlin">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div>
+		<div class="clear:both;"></div>
 	</div>
-	<div class="{% cycle 'tear', 'tear-alternate' %}"></div>
+	<hr/>
 {% endfor %}	

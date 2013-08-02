@@ -9,13 +9,13 @@ TDD is the way to go, I'm absolutely sure of it. It brings more benefits than yo
 		
 However, there a couple of reasons when you shouldn't even bother with unit tests:
 
-#If you don't know the language well
+##If you don't know the language well
 Don't even bother with unit tests at this point. Your code will change so much as you learn, its best just to leave the tests all together until you get a better grasp on the language.
 
-#You don't know the domain well
+##You don't know the domain well
 Again its a similar thing, chances are you won't have a good enough idea of how your solution will work. Again, as above, your code will change so much that its going to waste too much time testing.
 
-#You don't know the framework you are using
+##You don't know the framework you are using
 The first few weeks/months of using a new framework you'll do most things wrong and then end up having to re-write lots of code. Your unit tests will get broken all the time and probably all need to be re-written as your learn how to layout your code better.
 
 In short unit tests will be more hinderance than help if there is a lot of prototyping and learning in your application. In cases like this your best doing away with the tests and just writing the code. Wait until your code starts to stabilise and then go back and review the situation then. 
