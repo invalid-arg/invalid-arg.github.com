@@ -5,7 +5,7 @@ title: JavaScript can double your codebase so make sure you need it first
 
 There's been a JavaScript/SPA revolution in the past couple of years. Its now back in fashion and a lot of people are using it. I'm here to tell you it might not be worth it and that you should stick to server side code. 
 
-I use JavaScript everyday. Our main application is a SPA (kind of) and it works well. However, it did take a long time to get there and our codebase is a lot bigger and more complicated because of it. It's made me realise that you should think very carefully before jumping on the bandwagon. However, there are some positives to a heavy JavaScript client:
+I use JavaScript everyday. Our main application is a SPA (kind of) and it works well. However, it did take a long time to write and our codebase is a lot bigger and more complicated because of it. It's made me realise that you should think very carefully before jumping on the bandwagon. However, there are some positives to a heavy JavaScript client:
 
 - It gives your website a native feel. This can really help improve the user experience, although a native app would really be better.
 
@@ -31,4 +31,4 @@ Those advantages are great but do you need them? Because they bring a lot of hea
 
 - You'll have a much larger dependency on third party libraries as the JavaScript community is heavily built on these. 
 
-It just seems like you're increasing the size of your codebase (and tests) whilst at the same time reducing maintainability and increasing the probability of problems in your code. All for very few, possibly unnecessary, gains. I'm not saying there isn't a place for JS in our world. I'm saying think carefully. Chances are a traditional MVC app is more than adequate for your needs and it and will speed up development times if you don't have to worry about all the JavaScript. Allowing you to get your product to market quicker and think more about functionality instead.
+It just seems like you're increasing the size of your codebase (and tests) whilst at the same time reducing maintainability and increasing the probability of problems in your code. All for very few, possibly unnecessary, gains. I'm not saying there isn't a place for JS in our world. I'm saying think carefully. Chances are a traditional MVC app is more than adequate for your needs and it will speed up development times if you don't have to worry about it. Allowing you to get your product to market quicker and think more about functionality instead.

@@ -94,14 +94,13 @@ textarea {
    ========================================================================== */
 html, body {
     width: 100%;
-    background: #EEE;
+    background: #f9f9f9;
     margin: 0;
     padding: 0;
 }
 
 body {
-    /*font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-    font-family: 'Helvetica Neue', Helvetica, pragmatica-web, Arial, sans-serif;
+    font-family: 'Bitter', Georgia, 'Times New Roman', Times, serif;
 }
 
 #left-column {
@@ -207,10 +206,9 @@ body {
 #main-content {
     max-width: 720px;
     margin-left: 300px;
-    
     margin-top: 0;
     float: left;
-    color: #333;
+    color: #494949;
 }
 
 #main-content .inner {
@@ -219,7 +217,8 @@ body {
 }
 
 #main-content h1 {
-    font-size: 2.55em;
+    font-size: 1.9em;
+    text-shadow: 0 1px 0 #FFF;
 }
 
 #main-content h1 a{
@@ -229,17 +228,24 @@ body {
 
 #main-content h2 {
     margin-bottom: 0;
+    text-shadow: 0 1px 0 #FFF;
 }
 
 #main-content p {
-    font-size: 1.1em;
-    font-family: ff-meta-serif-web-pro, Georgia, Times, 'Times New Roman', serif;
-    line-height: 1.6;
+    font-size: 1em;
+    line-height: 1.444;
+    text-shadow: 0 1px 0 #FFF;
+
 }
 
 #main-content a {
-    color: #2F79E7;
+    color: #2f79e7;
     text-decoration: none;
+    text-shadow: 0 1px 0 #FFF;
+}
+
+#main-content a:hover {
+    text-decoration: underline;
 }
 
 .post .date {
@@ -249,9 +255,14 @@ body {
 	font-style: italic;
 	margin-right: 10px;
 	float: left;
+    text-shadow: 0 1px 0 #FFF;
 }
 
-@media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2), (max-width: 786px) {
+    #avatar, #blurb {
+        display: none;
+    }
+
     #left-column {
         position: relative;
         width: 100%;
@@ -278,7 +289,12 @@ body {
     }
 
     #left-column .inner {
-        padding-top: 5%;
+        padding-top: 5px;
+    }
+
+    #left-column .inner h2 {
+        padding-top: 0;
+        margin-top: 0 ;
     }
 
     #main-content {
@@ -300,6 +316,7 @@ code {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
+    text-shadow: 0;
 }
 
 pre	{
