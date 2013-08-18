@@ -33,4 +33,4 @@ If you want to use it in the traditional fashion or this method isn't working fo
 <div data-bind="inspect: $root, pinToTop: 'left'"></div>
 {% endhighlight %}
 
-I've also added it to rob conery's knockout cart as a demo [here](http://mat-mcloughlin.github.com/knockout-cart/example.html) and you can download the file <a href="http://mat-mcloughlin.github.com/ko-inspector.js" target="_blank">here</a>.
+I've also added it to rob conery's knockout cart as a demo [here](http://mat-mcloughlin.github.com/examples/knockout-cart/example.html) and you can download the file <a href="http://mat-mcloughlin.github.com/ko-inspector.js" target="_blank">here</a>.
