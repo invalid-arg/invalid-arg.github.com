@@ -178,7 +178,8 @@ body {
     vertical-align: middle;
     zoom: 1;
     text-indent: -9999px;
-    margin-right: 15px;
+    margin-right: 8px;
+    margin-left: 8px;
     width: 28px;
     height: 28px;
 }
@@ -201,6 +202,11 @@ body {
 #social a.rss {
     background: url('../img/rss.png') center no-repeat #EF7522;
     border: 1px solid #EF7522;
+}
+
+#social a.calendar {
+    background: url('../img/calendar.png') center no-repeat #08BC62;
+    border: 1px solid #08BC62;
 }
 
 #main-content {
@@ -310,7 +316,7 @@ code {
 	font-size: 12px;
 	line-height: 1.4em;
 	word-wrap: break-word;
-	font-family: Monaco, 'Lucida Console', monospace;
+	font-family: Menlo, Consolas, "Courier New", Courier, "Liberation Mono", monospace;
 	display: block;
 	padding: 10px;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -319,12 +325,15 @@ code {
     text-shadow: 0;
 }
 
+.highlight {
+    background: #333;
+    box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.1), 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
 pre	{
 	margin-top: 1rem;
 	margin-bottom: 1rem;
-	border-left: 2px #1C3FFD solid;
-	padding-left: 10px;
-	
+	padding-left: 10px;	
 }	
 
 
