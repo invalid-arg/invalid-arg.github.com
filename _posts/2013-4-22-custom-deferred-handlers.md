@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Custom JQuery Deferred Handlers
+post_url: http://mat-mcloughlin.github.io
 ---
 
 As the codebase at work gets bigger and bigger I've been trying to think of ways to simplify some of the simple create and update javascript functionality. Our application works by having a context that you can define a resource for then use to perform the CRUD functionality. For example:

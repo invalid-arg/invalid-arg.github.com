@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Knockout JSON Viewer Update
+post_url: http://mat-mcloughlin.github.io
 ---
 
 ![jsonViewer](/img/jsonViewer-subscriber.png)

@@ -1,22 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+---
+layout: none
+---
+<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mat McLoughlin</title>
-    <description>Powered by Beard</description>
-    <link>http://mat-mcloughlin.github.io</link>
-    <pubDate>{{ site.time | date: "%a, %d %b %Y 00:00:00 GMT" }}</pubDate>
-    <copyright>Copyright (c) 2013 Mathew McLoughlin</copyright>
-    <atom:link href="http://mat-mcloughlin.github.io/rss.xml" rel="self" type="application/rss+xml" />
-    {% for post in site.posts %}
-    {% unless post.draft %}
-    <item>
-      <title>{{ post.title | xml_escape }}</title>
-      <description>{{ post.content | xml_escape }}</description>
-      <link>http://mat-mcloughlin.github.io{{ post.url }}/</link>
-      <guid isPermaLink="true">http://mat-mcloughlin.github.io{{ post.url }}/</guid>
-      <pubDate>{{ post.date | date: "%a, %d %b %Y 00:00:00 GMT" }}</pubDate>
-    </item>
-    {% endunless %}
+    <title>{{ site.name }}</title>
+    <description>{{ site.description }}</description>
+    <link>{{ site.url }}</link>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
+    {% for post in site.posts limit:10 %}
+      <item>
+        <title>{{ post.title }}</title>
+        <description>{{ post.content | xml_escape }}</description>
+        <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+        <link>{{ site.url }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+      </item>
     {% endfor %}
   </channel>
 </rss>

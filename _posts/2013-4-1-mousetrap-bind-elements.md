@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Mousetrap Bind Elements
+post_url: http://mat-mcloughlin.github.io
 ---
 
 Shortcut keys are becoming more and more important in today's web, and libraries like [mousetrap](http://craig.is/killing/mice) are a god send when you want to implement them on your site. It allows you to assign various shortcut keys to callback functions. It even allows key combinations.

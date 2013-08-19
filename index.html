@@ -10,7 +10,7 @@ layout: layout
 		</div>
 		<div class="post-footer">
 			<span class="date">{{ post.date | date: "%B %e, %Y" }}</span>
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}{{ post.url }}" data-text="{{ post.title }}" data-via="mat_mcloughlin">Tweet</a>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="{% if post.post_url %}{{ post.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}" data-text="{{ post.title }}" data-via="mat_mcloughlin">Tweet</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</div>
 		<div class="clear:both;"></div>

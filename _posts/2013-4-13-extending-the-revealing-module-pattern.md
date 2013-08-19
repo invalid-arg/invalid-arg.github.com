@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Extending the Revealing Module Pattern
+post_url: http://mat-mcloughlin.github.io
 ---
 
 Somebody needs to tell me why this is a bad idea as I feel it should be.

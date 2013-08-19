@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Alternatives on the Javascript Constructor Pattern
+post_url: http://mat-mcloughlin.github.io
 ---
 
 Had a discussion in [@jabbr](https://jabbr.net/) recently about different ways of implementing the constructor/prototype pattern in javascript and a couple popped up. 

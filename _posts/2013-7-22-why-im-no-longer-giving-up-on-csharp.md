@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Why I'm no longer giving up on C#
+post_url: http://mat-mcloughlin.github.io
 ---
 
 For while now I've been getting bored and annoyed with C#. Its not that its a bad language, its just that when you look around the web there seems so many other languages that seem so fluent to write. NodeJs, Ruby, Javascript, Cloujure. These languages are all the rage at the moment and with good reason. Recently I've been playing around with all these languages trying to find a replacement for the C# that I've grown to hate.

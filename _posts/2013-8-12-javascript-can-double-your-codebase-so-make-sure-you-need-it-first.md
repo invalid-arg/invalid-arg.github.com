@@ -1,6 +1,7 @@
 ---
 layout: post
 title: JavaScript can double your codebase so make sure you need it first
+post_url: http://mat-mcloughlin.github.io
 ---
 
 There's been a JavaScript/SPA revolution in the past couple of years. Its now back in fashion and a lot of people are using it. I'm here to tell you it might not be worth it and that you should stick to server side code. 

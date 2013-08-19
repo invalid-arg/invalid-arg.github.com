@@ -1,6 +1,7 @@
 ---
 layout: post
 title: When you Shouldn't Bother Testing
+post_url: http://mat-mcloughlin.github.io
 ---
 
 <p><img src="/img/why-you-no-test.jpg" style="width:400px;margin-left:auto;margin-right:auto;display:block;" /></p>

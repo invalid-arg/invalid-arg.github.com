@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 403 Error and .NET Bundling
+post_url: http://mat-mcloughlin.github.io
 ---
 
 Came across this one the other day whilst using the .NET bundling functionality. All was fine in debug mode but as soon as I pushed it to production everything went pear shaped. The combined file kept returning a 403 error. 

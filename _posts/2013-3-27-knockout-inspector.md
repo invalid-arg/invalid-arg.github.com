@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Knockout Inspector
+post_url: http://mat-mcloughlin.github.io
 ---
 
 (I've changed the name to knockout inspector).

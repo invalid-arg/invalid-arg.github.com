@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Saving Key Strokes can bring a World of Pain
+post_url: http://mat-mcloughlin.github.io
 ---
 
 Developers seem to fall into two schools of thought on this one. Limit the amount of code you write or leverage the syntax to assure no mistakes are made. I've flirted between the two, but right now I'm heavily in favor of the latter approach. 

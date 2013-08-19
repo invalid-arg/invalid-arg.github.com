@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Another Reason you should be doing TDD
+post_url: http://mat-mcloughlin.github.io
 ---
 
 I've been to NDC this week. If you get the opportunity I highly recommend it. 
