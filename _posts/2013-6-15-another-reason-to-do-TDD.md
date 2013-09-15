@@ -2,11 +2,10 @@
 layout: post
 title: Another Reason you should be doing TDD
 post_url: http://mat-mcloughlin.github.io
+image: bob-martin.jpg
 ---
 
 I've been to NDC this week. If you get the opportunity I highly recommend it. 
-
-<p><img src="/img/bob-martin.jpg" style="width:637px;margin-left:auto;margin-right:auto;display:block;" /></p>
 
 I spent the first two days of the conference in a workshop with Bob Martin, talking about SOLID principles and TDD. In the TDD talk he opened my eyes up to a different way of looking at it, and I realized something.
 

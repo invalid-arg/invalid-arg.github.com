@@ -2,6 +2,7 @@
 layout: post
 title: Knockout Inspector
 post_url: http://mat-mcloughlin.github.io
+image: knockout-inspector.png
 ---
 
 (I've changed the name to knockout inspector).
@@ -9,8 +10,6 @@ post_url: http://mat-mcloughlin.github.io
 So I've finally got my knockout inspector in a state where it can be used. It's already helped me solve some bugs and performance problems. Maybe it will help you.
 
 It shows the underlying view model and properties, and any updates to those values. It's great if you have observables that aren't present in the view. Observables are in black and non-observables are in grey
-
-![knockout inspector](/img/knockout-inspector.png)
 
 The red and green counters, next to the observables, show the number of value changes and subscribers respectively. Its useful to bear in mind that if an observable is bound to a DOM element this will add a subscriber to the count.
 
@@ -29,7 +28,7 @@ And thats it!
 
 If you want to use it in the traditional fashion or this method isn't working for you, try the code below:
 
-{% highlight html linenos=table %}
+{% highlight html linenos %}
 <script src="http://mat-mcloughlin.net/ko-inspector.js"></script>
 <div data-bind="inspect: $root, pinToTop: 'left'"></div>
 {% endhighlight %}

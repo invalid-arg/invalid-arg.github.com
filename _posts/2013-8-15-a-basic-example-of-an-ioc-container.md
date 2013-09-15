@@ -2,6 +2,7 @@
 layout: post
 title: A Basic Example of an IoC Container
 post_url: http://mat-mcloughlin.github.io
+image: inversion_house_artwork.jpg
 ---
 Its bad I know. I've been using an IoC Container for while now, but never really knew how they worked. I had an idea, but it wasn't clear in my head. I got bored last night so I thought I'd have a go at writing a very simple one.
 

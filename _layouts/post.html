@@ -2,29 +2,102 @@
 layout: layout
 ---
 
-<div class="post">
-	<h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-	<div class="description">
-	{{ content }}
-	</div>
-	<div class="post-footer">
-		<span class="date">{{ page.date | date: "%B %e, %Y" }}</span>
-		<a href="https://twitter.com/share" class="twitter-share-button" data-url="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}" data-text="{{ page.title }}" data-via="mat_mcloughlin">Tweet</a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	</div>
-	<div id="disqus_thread"></div>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
- 
+<div id="content">
+    <div class="posts">
+        <article class="post">
+            <div class="box-wrap">
+                <div class="box">
+                    <header>
+                        <div class="date-title">{{ page.date | date: "%e %B, %Y" }}<span class="date-space">&mdash;</span> <a class="lower-jump" href="{{ site.url }}{{ page.url }}#disqus_thread"></a></div>
+                        <h2 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h2>
+                    </header>
+                    {% if page.image %}
+                    <a class="featured-image featured-image-bw" href="/images/posts/{{ page.image }}" title="{{ page.title }}">
+                        <img width="720" height="285" src="/images/posts/{{ page.image }}" class="attachment-featured-image">
+                    </a>
+                    {% endif %}
+                    <div class="post-content">
+                        <div class="excerpt-more">
+                            {{ content }}
+                        </div>
+                    </div>
+                    <div class="next-prev"> 
+                        {% if page.previous.url %} 
+                            <div class="prev-post">
+                                <a href="{{page.previous.url}}" rel="prev">{{page.previous.title}}</a>
+                            </div>
+                        {% endif %}
+                        {% if page.next.url %} 
+                            <div class="next-post">
+                                <a href="{{page.next.url}}" rel="next">{{page.next.title}}</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
 </div>
+
+<div id="lower-jump" class="lower clearfix">
+    <div class="lower-inside">
+        <ul class="meta-list clearfix">
+            <li>
+                <div class="meta-title">Author</div>
+                <a href="#" title="Posts by Mat McLoughlin" rel="author">Mat McLoughlin</a>
+            </li>
+            
+            <li class"share">
+                <div class="meta-title">Share</div>
+
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}" data-text="{{ page.title }}" data-via="mat_mcloughlin">Tweet</a>
+                <br>
+
+                <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="{{ page.title }}" data-url="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}">Vote on HN</a>
+                <br>
+
+
+                <div class="g-plusone" data-size="medium"></div>
+               
+
+                <div class="fb-like" data-href="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+                <br>
+                <div id="fb-root"></div>
+                
+            </li>
+        </ul>
+
+        <div id="comment-jump" class="comments">
+            <div id="comments">
+                <div class="comments-wrap">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                        var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
+
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                </div><!-- .comments-wrap -->
+            </div><!-- #comments -->
+        </div>
+    </div><!-- lower inside -->
+</div>
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function () {
+var s = document.createElement('script'); s.async = true;
+s.type = 'text/javascript';
+s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>

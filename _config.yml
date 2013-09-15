@@ -3,3 +3,4 @@ pygments: true
 name: Mat McLoughlin
 description: Mat McLoughlin
 url: http://mat-mcloughlin.net
+paginate: 5

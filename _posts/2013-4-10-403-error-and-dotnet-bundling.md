@@ -16,7 +16,7 @@ bundle.AddFile("~/Scripts/modernizr-2.0.6-development-only.js");
 BundleTable.Bundles.Add(bundle); 
 {% endhighlight %}
 
-won't work. However this:
+Won't work. However this:
 
 {% highlight csharp linenos %}
 var bundle = new Bundle("~/MyScripts");
@@ -26,4 +26,4 @@ bundle.AddFile("~/Scripts/modernizr-2.0.6-development-only.js");
 BundleTable.Bundles.Add(bundle);
 {% endhighlight %}
 
-will. Not the most useful error message but problem solved none the less.
+Will. Not the most useful error message but problem solved none the less.

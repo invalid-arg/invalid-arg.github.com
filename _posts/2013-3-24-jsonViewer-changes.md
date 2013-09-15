@@ -2,9 +2,8 @@
 layout: post
 title: Knockout JSON Viewer Update
 post_url: http://mat-mcloughlin.github.io
+image: jsonViewer-subscriber.png
 ---
-
-![jsonViewer](/img/jsonViewer-subscriber.png)
 
 I've added a couple of additional features to my jsonViewer, Subscriber count and embedded stylesheet.
 

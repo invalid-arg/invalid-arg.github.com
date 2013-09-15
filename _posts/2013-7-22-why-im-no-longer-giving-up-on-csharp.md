@@ -23,9 +23,7 @@ public class SampleModule : Nancy.NancyModule
 }
 {% endhighlight %}
 
-To setup a simple get request.
-
-And the [documentation](https://github.com/NancyFx/Nancy/wiki) is excellent.
+To setup a simple get request. Also, the [documentation](https://github.com/NancyFx/Nancy/wiki) is excellent.
 
 ##[Massive](https://github.com/robconery/massive)
 This is a DataAccess tool written by [@robconery](https://twitter.com/robconery). Its simple, easy to setup and easy to use. However it does rely heavily on dynamic, so if your not into that kind of thing then you might want to give this one a miss.

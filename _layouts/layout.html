@@ -1,62 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>Mat McLoughlin</title>
-		<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-		<link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" media="all" href="/css/normalize.css" />
-		<link rel="stylesheet" type="text/css" media="all" href="/css/main.css" />
-		<link rel="stylesheet" type="text/css" media="all" href="/css/railscasts.css" />
-		<link rel="alternate" type="application/rss+xml" title="Mat Mcloughlin" href="http://mat-mcloughlin.github.io/rss.xml" />
 		<meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content=".Net developer and lover of javascript. This blog contains my thoughts and ramblings.">
+		<title>Mat McLoughlin</title>
+		<link href="/fonts/fontawesome/font-awesome.css" rel="stylesheet" media="all" />
+		<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>    
+		<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+		<link href="/css/style.css" rel="stylesheet" media="all" />
+		<link href="/css/pygments.css" rel="stylesheet" media="all" />
+		<link href="/css/railscasts.css" rel="stylesheet" media="all" />
+
+		<!-- <link rel="profile" href="http://gmpg.org/xfn/11" /> -->
+		<!-- <link rel="pingback" href="" /> -->
+
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0" />
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+		<link href="/css/media-queries.css" rel="stylesheet" media="all" />
+		
+		<!-- add js class -->
+		<script type="text/javascript">
+			document.documentElement.className = 'js';
+		</script>
 	</head>
+
 	<body>
-		<div id="container">
-			<div id="left-column">
-			    <div class="inner">
-			        <div id="avatar">
-			        	<a href="/" title="Mathew McLoughlin">
-			            	<img src="/img/avatar.png">
-			        	</a>
-			        </div>
-			        <h2><a style="color:inherit;text-decoration:none;" href="/" title="Mathew McLoughlin">Mathew McLoughlin</a></h2>
-			        <p id="blurb">.Net developer and lover of javascript. I enjoy climbing and surfing (in cold water). Powered by Beard.<br/>Leeds, UK</p>
-			        <div class="clear:both;"></div>
-			        <div id="social">
-			            <a class="twitter" title="twitter" href="http://twitter.com/mat_mcloughlin"></a>
-			            <a class="github" title="github" href="https://github.com/mat-mcloughlin"></a>
-			            <a class="rss" title="rss" href="/rss.xml"></a>
-			            <a class="calendar" title="archive" href="/archives.html"></a>
-			        </div>
-			        <h3>Recent Posts</h3>
-			        <ul>
-			        	{% for post in site.posts offset: 0 limit: 4 %}
-				            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-				        {% endfor %}
-			        </ul>
-			    </div>
+		<header class="header">
+			<div class="header-inside clearfix">
+				<div class="hgroup animated flipInX">	
+					<h1 class="logo-text"><a href="/" title="Mat McLoughlin">Mat McLoughlin</a></h1>
+					<h2 class="logo-subtitle">This blog contains my thoughts and ramblings</h2>
+				</div>
+
+				<div class="icon-nav animated flipInX">
+					<a class="nav-toggle" href="#"><i class="icon-reorder"></i></a>
+					<a id="archive-toggle" class="archive-toggle" href="#">
+						<i class="icon-folder-close"></i>
+						<i class="icon-folder-open"></i>
+					</a>
+					<a href="https://github.com/mat-mcloughlin"><i class="icon-github-sign"></i></a>
+					<a href="https://twitter.com/mat_mcloughlin"><i class="icon-twitter"></i></a>
+					<a href="/rss.xml"><i class="icon-rss"></i></a>
+				</div>
+
+				<div id="nav-list" class="header-panel" style="overflow: hidden; display: block;">
+					<div class="menu-header-container">
+						<ul id="menu-header" class="nav">
+							<li id="menu-item-575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-575"><a href="/archives.html">Archives</a></li>
+							<li id="menu-item-575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-575"><a href="/aspnet-youre-doing-it-wrong.html">ASP.NET You're doing it Wrong</a></li>
+						</ul>
+					</div>			
+				</div>
+				
+				<div id="archive-list" class="header-panel">
+					<ul>
+						{% for post in site.posts offset: 0 limit: 10 %}
+							<li><span>{{ post.date | date: "%d.%m.%y" }}</span> <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
 			</div>
-			<div id="main-content">
-			    <div class="inner">
-			    	{{ content }}
-			   	</div>
+		</header>
+		
+		<div id="wrapper">
+			<div id="main">
+				{{ content }}
 			</div>
 		</div>
-		<script type="text/javascript">
 
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-1746767-6']);
-		  _gaq.push(['_trackPageview']);
+		<script type="text/javascript" src="/js/jquery.mobilemenu.js"></script>
+		<script type="text/javascript" src="/js/jquery.history.js"></script>
+		<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+		<script type="text/javascript" src="/js/custom.js"></script>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                <script>(function(d,t){var g = d.createElement(t),s = d.getElementsByTagName(t)[0];g.src = '//hnbutton.appspot.com/static/hn.min.js';s.parentNode.insertBefore(g, s);}(document, 'script'));</script>
+                 <script type="text/javascript">window.___gcfg = {lang: 'en-GB'};(function(){var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>
+                 <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "http://connect.facebook.net/en_GB/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
 
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
+<script type="text/javascript">
 
-		</script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1746767-6']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 	</body>
 </html>
