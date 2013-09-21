@@ -65,3 +65,66 @@ _If at this point Jekyll still doesn't work it you may need to revert to pygment
 For this section I'm going to refer you to the [official site](http://jekyllrb.com/). Come back when you're done.
 
 ## Part Five: Hosting on GitHub
+You've got two options here. A simple one and a more complicated one. I'll show you the simple way first and then if you need it you can move onto the more complicated option. 
+
+GitHub allow you to host a website in one of your repositories at the URL `|username|.github.io`. To set this up you need to create a repository called `|username|.github.io`. You can then push your newly created blog straight to this repository. The reason you can do this is because GitHub will actually run your application through Jekyll on the server.
+
+_Your blog should have a .gitignore file in the root of your blog that contains the following_
+
+_site/
+serve/
+
+However, after you've been playing with Jekyll for a while, you probably want to install some plugins. This is where GitHub falls down. It runs Jekyll in safe mode so it will ignore any plugins you install. So you're going to have to start generating the site locally and pushing the compiled site to GitHub. I'm sure there a a couple of ways to do this, but here is my way.
+
+Go to your repository and create a new branch. Call it source:
+
+[image]
+
+and set it as your default branch. This is so when somebody comes to your git repository they will see this rather than the compiled site
+
+[image]
+
+then create a new file in the route of your blog and call it rake.rb and add the following code:
+
+require 'rubygems'
+require 'jekyll'
+require 'tmpdir'
+
+# Change your GitHub reponame
+GITHUB_REPONAME = "<your git repository>"
+TEMP_DIRECTORY = "<absolute path location to generate your site to>"
+
+desc "Generate blog files"
+task :generate do
+  system "Jekyll build --source . --destination _site"
+end
+
+desc "Generate and publish blog to gh-pages"
+task :publish => [:generate] do
+  system "mkdir \"#{TEMP_DIRECTORY}\""
+  cp_r "_site/.", TEMP_DIRECTORY
+  Dir.chdir TEMP_DIRECTORY
+  system "git init"
+  system "git add ."
+  message = "Site updated at #{Time.now.utc}"
+  system "git commit -m \"#{message}\""
+  system "git remote add origin https://github.com/#{GITHUB_REPONAME}.git"
+  system "git push origin master --force"
+  rm_rf TEMP_DIRECTORY
+end
+
+This Ruby is a ruby rake file, if you want to learn more about it checkout this site. It will give you two commands that you can run from the root of you blog
+
+	C:\> rake generate
+
+that will generate the site and 
+
+	C:\> rake publish
+
+That will generate your site (locally) and copy it into a temporay location (I usually put it in `C:\temp\generate_blog') and push it to the master branch of your git repository.
+
+_The master branch is the one github uses for your site_
+
+And thats it! Hopefully this will help people where I got stuck. If you have any problems leave a comment and I will try my best to help.
+
+
