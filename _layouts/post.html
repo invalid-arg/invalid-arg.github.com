@@ -2,102 +2,94 @@
 layout: layout
 ---
 
-<div id="content">
-    <div class="posts">
-        <article class="post">
-            <div class="box-wrap">
-                <div class="box">
-                    <header>
-                        <div class="date-title">{{ page.date | date: "%e %B, %Y" }}<span class="date-space">&mdash;</span> <a class="lower-jump" href="{{ site.url }}{{ page.url }}#disqus_thread"></a></div>
-                        <h2 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h2>
-                    </header>
-                    {% if page.image %}
-                    <a class="featured-image featured-image-bw" href="/images/posts/{{ page.image }}" title="{{ page.title }}">
-                        <img width="720" height="285" src="/images/posts/{{ page.image }}" class="attachment-featured-image">
-                    </a>
-                    {% endif %}
-                    <div class="post-content">
-                        <div class="excerpt-more">
-                            {{ content }}
-                        </div>
-                    </div>
-                    <div class="next-prev"> 
-                        {% if page.previous.url %} 
-                            <div class="prev-post">
-                                <a href="{{page.previous.url}}" rel="prev">{{page.previous.title}}</a>
-                            </div>
-                        {% endif %}
-                        {% if page.next.url %} 
-                            <div class="next-post">
-                                <a href="{{page.next.url}}" rel="next">{{page.next.title}}</a>
-                            </div>
-                        {% endif %}
-                    </div>
+<div class="posts">
+    <article class="post" style="margin-bottom: 0;"> 
+        {% if page.image %}
+            <a class="featured-image grayscale" href="{{ root_url }}{{ page.url }}" title="{{ page.title }}">
+                <img width="1400" height="600" src="/images/posts/{{ page.image }}" class="attachment-large-image wp-post-image" alt="iphone2" />
+            </a>
+        {% endif %}
+
+        <div class="box-wrap">
+            <div class="box"> 
+                <header class="post-header">
+                    <div class="date-title">{{ page.date | date: "%e %B, %Y" }}</div>
+                    <h2 class="entry-title">
+                        <a href="{{ site.url }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a>
+                    </h2> 
+                </header>
+                <div class="post-content">
+                    {{ content }}
                 </div>
-            </div>
+                <ul class="meta">
+                    <div class="meta-title">Share</div>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}" data-text="{{ page.title }}" data-via="mat_mcloughlin">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    </li>
+                    <li> 
+                        <a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a>
+                        <script>(function(d, t) { var g = d.createElement(t), s = d.getElementsByTagName(t)[0]; g.src = '//hnbutton.appspot.com/static/hn.min.js'; s.parentNode.insertBefore(g, s); }(document, 'script'));</script>
+                        </li>
+                        <li>
+                            <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
+                            <script type="text/javascript">(function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();</script>
+                        </li>
+                        <li>
+                            <div class="fb-like" data-href="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+                            <div id="fb-root"></div>
+                            <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+                        </li>
+                        <li class="next-prev-mobile">&nbsp;</li>
+                        <li class="prev-mobile next-prev-mobile">
+                            <a href="http://themes.okaythemes.com/pocket/2012/10/01/bart-goes-under-the-bay/" rel="prev"><i class="icon-arrow-left"></i> Previous Post</a>
+                        </li>
+                        <li class="next-prev-mobile">
+                            <a href="http://themes.okaythemes.com/pocket/2012/10/01/a-trip-to-the-san-francisco-bay/" rel="next"><i class="icon-arrow-right"></i> Next Post</a>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
         </article>
     </div>
-</div>
 
-<div id="lower-jump" class="lower clearfix">
-    <div class="lower-inside">
-        <ul class="meta-list clearfix">
-            <li>
-                <div class="meta-title">Author</div>
-                <a href="#" title="Posts by Mat McLoughlin" rel="author">Mat McLoughlin</a>
-            </li>
-            
-            <li class"share">
-                <div class="meta-title">Share</div>
+    <div id="comment-jump" class="comments"><div id="comments">
+        <h3 id="comments-title" class="comment-toggle">Comments</h3>
+            <div class="comments-wrap" style="display:none;">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+                  var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
 
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}" data-text="{{ page.title }}" data-via="mat_mcloughlin">Tweet</a>
-                <br>
-
-                <a href="http://news.ycombinator.com/submit" class="hn-share-button" data-title="{{ page.title }}" data-url="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}">Vote on HN</a>
-                <br>
-
-
-                <div class="g-plusone" data-size="medium"></div>
-               
-
-                <div class="fb-like" data-href="{% if page.post_url %}{{ page.post_url }}{% else %}{{ site.url }}{% endif %}{{ post.url }}{{ page.url }}" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
-                <br>
-                <div id="fb-root"></div>
-                
-            </li>
-        </ul>
-
-        <div id="comment-jump" class="comments">
-            <div id="comments">
-                <div class="comments-wrap">
-                    <div id="disqus_thread"></div>
-                    <script type="text/javascript">
-                        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                        var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
-
-                        /* * * DON'T EDIT BELOW THIS LINE * * */
-                        (function() {
-                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                        })();
-                    </script>
-                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                </div><!-- .comments-wrap -->
-            </div><!-- #comments -->
+                  /* * * DON'T EDIT BELOW THIS LINE * * */
+                  (function() {
+                      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                  })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
         </div>
-    </div><!-- lower inside -->
+    </div>
+
+    <div class="next-prev">
+        {% if page.previous.url %}
+            <div class="prev-post"> 
+                <a href="{{page.previous.url}}" rel="prev">Previous Post</a>
+            </div>
+        {% endif %}
+        {% if page.next.url %}
+            <div class="next-post"> 
+                <a href="{{page.next.url}}" rel="next">Next Post</a>
+            </div>
+        {% endif %}
+    </div>
 </div>
-
 <script type="text/javascript">
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
-
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function () {
-var s = document.createElement('script'); s.async = true;
-s.type = 'text/javascript';
-s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
+$(function() {
+    $('#comments-title').on('click', function() {
+        $('.comments-wrap').slideToggle('slow');
+    });
+});
 </script>

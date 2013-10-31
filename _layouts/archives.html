@@ -1,32 +1,33 @@
 ---
 layout: layout
 ---
+	
+<div class="posts" style="opacity: 1;">
+	<article class="post-281 page type-page status-publish hentry post">
+		<div class="box-wrap">
+			<div class="box">
+				<header class="post-header">
+					<div class="date-title">October 15, 2012</div>
+					<h1 class="entry-title"><a href="/archive.html" title="Archive">Archive</a></h1> 
+				</header>
 
-<div id="content">
-	<div class="posts" style="opacity: 1;">
-		<article class="post-311 page type-page status-publish hentry post">
-			<div class="box-wrap">
-				<div class="box">
-					<header>
-						<h1 class="entry-title"><a href="/archives.html" title="Archives">Archives</a></h1>
-					</header>
-
-					<div class="post-content">
-						<p>Welcome to the archives. You can browse my latest posts, or go back in time and see what I wrote weeks, months, or years ago.</p>
-						<div id="archive">
-							<h3>Latest Posts</h3>
+				<div class="post-content">
+					<p>Welcome to the archives. You can browse my latest posts, or go back in time and see what I wrote weeks, months, or years ago.</p>
+					<div id="archive">
+						<div class="archive-col">
 							{% for month in page.months %}
 								<h4>{{ month | date:"%B" }} <small>{{ month | date:"%Y" }}</small></h4>
-  								<ul>
-  									{% for post in page.posts_by_month[month] %}
-    									<li><a href="{{ post.url }}">{{ post.title | truncate:65 }}</a></li>
-  									{% endfor %}
+									<ul>
+										{% for post in page.posts_by_month[month] %}
+										<li><a href="{{ post.url }}">{{ post.title | truncate:65 }}</a></li>
+										{% endfor %}
 								</ul>
 							{% endfor %}
 						</div>
 					</div>
 				</div>
 			</div>
-		</article>
-	</div>
+		</div>
+	</article>
 </div>
+

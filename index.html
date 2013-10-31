@@ -1,62 +1,46 @@
 ---
 layout: layout
 ---
-<div id="content">
-	<div class="posts">
-		{% for post in paginator.posts offset: 0 limit: 5 %}
-			<article class="post">
+
+<div class="posts">
+	<div id="post-block"> 
+    	
+    	{% for post in paginator.posts %}
+      		<article class="post-191 post type-post status-publish format-standard hentry category-photography category-technology tag-apple tag-iphone-5 post"> 
+  
+	  			{% if post.image %}
+	    			<a class="featured-image grayscale" href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">
+	      				<img width="1400" height="600" src="/images/posts/{{ post.image }}" class="attachment-large-image wp-post-image" alt="iphone2" />
+	    			</a>
+	  			{% endif %}
+
 				<div class="box-wrap">
-					<div class="box">
-						<header>
-							<div class="date-title">{{ post.date | date: "%e %B, %Y" }}<span class="date-space">&mdash;</span> <a class="lower-jump" href="{{ site.url }}{{ post.url }}#disqus_thread"></a></div>
-							<h2 class="entry-title"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
-						</header>
-						{% if post.image %}
-						<a class="featured-image featured-image-bw" href="/images/posts/{{ post.image }}" title="{{ post.title }}">
-							<img width="720" height="285" src="/images/posts/{{ post.image }}" class="attachment-featured-image">
-						</a>
-						{% endif %}
-						<div class="post-content">
-							<div class="excerpt-more">
-								{{ post.excerpt }}
-								<a class="excerpt-link" href="{{ post.url }}" title="the title">read more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</article>
-		{% endfor %}
-	</div>
+	  				<div class="box"> 
+	    				<header class="post-header">
+	      					<div class="date-title">{{ post.date | date: "%e %B, %Y" }}</div>
+	      					<h2 class="entry-title">
+	          					<a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+	      					</h2> 
+	    				</header>
+				      	<div class="post-content">
+	        				{{ post.excerpt }}
+	      				</div>
+	      				<p> 
+	        				<a href="{{ site.url }}{{ post.url }}" class="more-link">- Read More -</a>
+	      				</p>
+	  				</div>
+				</div> 
+	      	</article>
+    	{% endfor %}
+
+  	</div>
 </div>
 
-<div class="post-nav">
-	<div class="post-nav-inside">
-		<div class="post-nav-right">
-			{% if paginator.previous_page %}
-				{% if paginator.previous_page == 1 %}
-					<a href="/" class="previous">NEWER POSTS</a>
-				{% else %}
-					<a href="/page{{ paginator.previous_page }}" class="previous">NEWER POSTS</a>
-				{% endif %}
-			{% endif %}
-		</div>
-		<div class="post-nav-left">
-			{% if paginator.next_page %}
-				<a href="/page{{ paginator.next_page }}" class="next">OLDER POSTS</a>
-			{% endif %}
-		</div>
-	</div>
+<div id="infinite-handle">
+	{% if paginator.next_page %}
+		<a class="prev" href="{{paginator.next_page}}" style="float:left;">Older Posts</a>
+	{% endif %}
+	{% if paginator.previous_page %}
+		<a class="next" href="{{paginator.previous_page}}" style="float:right;">Newer Posts</a>
+	{% endif %}
 </div>
-
-<script type="text/javascript">
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
-
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function () {
-var s = document.createElement('script'); s.async = true;
-s.type = 'text/javascript';
-s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
