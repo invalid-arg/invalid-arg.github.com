@@ -4,7 +4,7 @@ require 'tmpdir'
 
 # Change your GitHub reponame
 GITHUB_REPONAME = "mat-mcloughlin/mat-mcloughlin.github.com"
-TEMP_DIRECTORY = "c:\\temp\\blog_upload"
+TEMP_DIRECTORY = "\\tmp\\blog_upload"
 
 
 desc "Generate blog files"

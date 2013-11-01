@@ -55,7 +55,7 @@ layout: layout
 
     <div id="comment-jump" class="comments"><div id="comments">
         <h3 id="comments-title" class="comment-toggle">Comments</h3>
-            <div class="comments-wrap" style="display:none;">
+            <div class="comments-wrap">
                 <div id="disqus_thread"></div>
                 <script type="text/javascript">
                   /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -86,10 +86,4 @@ layout: layout
         {% endif %}
     </div>
 </div>
-<script type="text/javascript">
-$(function() {
-    $('#comments-title').on('click', function() {
-        $('.comments-wrap').slideToggle('slow');
-    });
-});
-</script>
+
