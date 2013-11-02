@@ -22,8 +22,12 @@ The constraints available to you are:
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td><code>{value:int}</code></td>
+		<td>Must be an integer value (long is used so any size int can be used_</td>
+	</tr>
+	<tr>
 		<td><code>{value:decimal}</code></td>
-		<td>Must be have a decimal place</td>
+		<td>Must be have decimal place</td>
 	</tr>
 	<tr>
 		<td><code>{value:guid}</code></td>
@@ -67,7 +71,7 @@ The constraints available to you are:
 	</tr>
 </table>
 
-If you've looked at the WebAPI implementation of this you may have noticed there are some other options such as _long_ and _float_ that are not included here. I don't think these are really nessasary as distinguishing between them isn't really useful for route paramters. better to just have _int_ and _decimal_
+If you've looked at the WebAPI implementation of this you may have noticed there are some other options such as _long_ and _float_ that are not included here. I don't think these are really necessary as distinguishing between them isn't really useful for route paramters. better to just have _int_ and _decimal_. However I will point out that `{value:int}` does use long so that any size of integer can be used.
 
 As an example to where this is useful. Imagine you want the same route to find a product, but you want to allow a user to use a product id or a product name. The following example will allow you to do that:
 

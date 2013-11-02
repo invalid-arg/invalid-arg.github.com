@@ -1684,13 +1684,16 @@ img.alignright {
     background: #282D30;
 }
 
-.infinite-scroll #infinite-handle:hover {
-	cursor: pointer;
-	background: #222629;
-}
-
 #infinite-handle span {
 	background: none;
 	font-size: 16px;
 	padding: 0;
+}
+
+#infinite-handle a {
+	color: #777;
+}
+
+#infinite-handle a:hover {
+	color: #fff;
 }
