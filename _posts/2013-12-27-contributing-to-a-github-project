@@ -1,0 +1,58 @@
+---
+layout: post
+title: Contributing to a GitHub projec
+published: false
+---
+
+So you want to contribute to an open source project, but it's on github. If you've never used git or github before it can be bit of a barrier to overcome with all its "pull requests" and "rebasing". Also the fact that a lot of the commands are issued via the terminal can be quiet confusing too, I know it was for me! (and some of it still is). So, with this is mind, I thought it might be useful to run through my typical workflow when contributing to a project.
+
+For this demonstration I've created a project on my GitHub account that has one text file. That stores the Ozymandias poem. However it has some spelling mistakes and errors that need sorting:
+
+### 1. Create a Fork
+So you've noticed some problems with the poem that need fixing. The first thing you need to do is fork the repository. To do this, first go to the github project page and then click on the fork button in the top right hand corner. 
+
+This will create your own copy of the project attached to your own github account. You can now work on this as you please. Infact there is no reason to even send a pull request to the original repository. If the original creator of the project doesn't want your changes you can just keep your own fork of the repository and pull down an changes to the main repository as an when the happen. People can then go ahead and fork your own repository. This is one of the things that is great things about github.
+
+### 2. Clone the Repository onto your Computer
+I'm not going to explain how to get Git installed on your computer as this is pretty easy. To clone the repository you can copy the text from your project page (the one you forked) and issue this command on the terminal. Make sure to put it in a sensible place.
+
+[command]
+
+In the case of this project I will be left with one folder called `Ozymandias`
+
+[command]
+
+### 3. Create a link to the Original Repository
+So you've got a copy of your repository on your PC but what happens if something changes to the original project that you forked from? You will need a way to pull these changes back into your copy. To do this you create a link to the original repository with the following command:
+
+[command]
+
+This is called a remote repository. By convention we usually call the original project upstream, but there is nothing stopping you having multiple remote repositories. If we type the following command you'll see we now have two remote repositories. 
+
+[command]
+
+origin is your own, upstream is the original project.
+
+### 4. Creating a branch
+It's a good idea, before you start working on anything, to create a branch. This isn't required, but it does mean that you can make any changes seperate from, what is called the master branch (where the original source is). Its also allows....
+
+So lets create a branch:
+
+[command]
+
+### 4. Make changes and commit.
+
+
+### 5. Pull down and merge changes from original project
+Rebasing is re-basing, that is, choosing a new base (parent commit) for a tree. 
+
+
+### 6. Change something else
+
+### 7. Squash changesets
+
+### 8. Push to your repository
+
+### 9. Issue pull request
+
+

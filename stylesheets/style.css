@@ -82,8 +82,8 @@ body {
     margin: 0 auto;
     max-width: 1175px;
     color: #555;
-    font: 16px/28px 'Helvetica Neue', Helvetica, sans-serif;
-    background: #363d40;
+    font: 14px/24px 'Open Sans', Helvetica, sans-serif;
+    background: url('/images/background.png') #363d40;
     overflow-x: hidden;
     padding: 110px 20px 5% 20px;
 }
@@ -91,7 +91,7 @@ body {
 img { border-style: none }
 
 a { 
-	color: #DD574C;
+	color: rgba(0,83,159,0.65);
 	text-decoration: none;
 	-webkit-transition: .07s ease-in;  
 	-moz-transition: .07s ease-in;  
@@ -151,10 +151,10 @@ hr {
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 4% 0;
-    font-family: 'Raleway', 'Helvetica Neue', Helvetica, sans-serif;
-    font-weight: normal;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: lighter;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 100;
     line-height: 1.2;
 }
 
@@ -563,7 +563,7 @@ h6 {
 .post .box { 
 	position: relative;
 	margin: 0 auto;
-	padding: 4% 20%;
+	padding: 4% 12%;
 }
 
 .page .post .box {
@@ -571,7 +571,9 @@ h6 {
 }
 
 .post .post-content {
-	font: 18px/30px 'Droid Serif', Georgia, serif;
+	font-size: 18px/30px;
+	font-family: 'Open Sans', Georgia, serif;
+	line-height: 1.5;
 }
 
 .post .post-content ul, .post .post-content ol {
@@ -636,10 +638,10 @@ h6 {
 }
 
 .entry-title {
-	font-weight: 800;
+	font-weight: 200;
 	text-transform: uppercase;
-    font-size: 52px;
-    line-height: 62px;
+    font-size: 42px;
+    line-height: 52px;
 	text-align: center;
     margin: 0;
 }
@@ -698,7 +700,7 @@ h6 {
 }
 
 #content p { 
-	margin: 0 0 4%;
+	margin: 0 0 3%;
 }
 
 #content img {
@@ -710,7 +712,7 @@ h6 {
 	font-family: 'Helvetica Neue', Helvetica, sans-serif;
 	font-size: 15px;
 	color: #999;
-	margin: 25px 0 40px 0 !important;
+	margin: 0 !important;
 	width: 100%;
 	display: inline-block;
 }
@@ -830,7 +832,7 @@ h6 {
 }
 
 .next-prev a {
-	background: #DD574C;
+	background: rgba(0,83,159,0.65);
 	padding: 10px;
 	color: #fff;
 	font-size: 14px;
@@ -916,7 +918,7 @@ h6 {
 .comments-wrap {
 	width: 60%;
 	margin: 0 auto;
-	padding: 8% 0;
+	padding: 4% 0;
 }
 
 #comments-title {
@@ -1102,7 +1104,7 @@ h6 {
 
 .comment-text {
 	position: relative;
-	font: 16px/26px 'Droid Serif', Georgia, serif;
+	font: 16px/26px 'Open Sans', serif;
 }
 
 .comment-text p {
@@ -1501,7 +1503,7 @@ img.alignright {
     color: #777;
     border: none;
     background: #eee;
-    font: 13px/22px 'Droid Serif', Georgia, serif;
+    font: 13px/22px 'Open Sans', serif;
     width: 100%;
     padding: 10px;
     -webkit-border-radius: 3px; 

@@ -2,7 +2,7 @@
 @media only screen and (max-width:768px) {
     
     body {
-    	font: 15px/26px 'Helvetica Neue', Helvetica, sans-serif;
+    	font: 15px/26px 'Open Sans', Helvetica, sans-serif;
 	    padding: 20px;
     }
 
@@ -192,7 +192,7 @@
 	}
 	
 	.post .post-content {
-		font: 15px/24px 'Droid Serif', Georgia, serif;
+		font: 15px/24px 'Open Sans', serif;
 	}
 	
 	#content .meta {
@@ -311,7 +311,7 @@
 	}
 	
 	.comment-text {
-		font: 14px/22px 'Droid Serif', Georgia, serif;
+		font: 14px/22px 'Open Sans', serif;
 	}
 	
 	#respond {
@@ -323,7 +323,7 @@
 	}
 	
 	#respond input[type="text"], #respond textarea {
-		font: 14px/22px 'Droid Serif', Georgia, serif;
+		font: 14px/22px 'Open Sans', serif;
 		width: 100%;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
@@ -365,7 +365,7 @@
     }
 
 	.post .post-content {
-		font: 18px/30px 'Droid Serif', Georgia, serif;
+		font: 18px/30px 'Open Sans', serif;
 	}
 
 	#archive {

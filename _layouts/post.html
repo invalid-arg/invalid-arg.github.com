@@ -12,7 +12,7 @@ layout: layout
     <article class="post" style="margin-bottom: 0;"> 
         {% if page.image %}
             <a class="featured-image grayscale" href="{{ root_url }}{{ page.url }}" title="{{ page.title }}">
-                <img width="1400" height="600" src="/images/posts/{{ page.image }}" class="attachment-large-image wp-post-image" alt="iphone2" />
+                <img width="1400" height="600" src="/images/posts/{{ page.image }}" class="attachment-large-image" alt="{ page.title }}" />
             </a>
         {% endif %}
 
@@ -56,39 +56,39 @@ layout: layout
                     </ul>
                 </div>
             </div> 
-        </article>
-    </div>
+        </div>
+    </article>
+</div>
 
-    <div id="comment-jump" class="comments"><div id="comments">
-            <div class="comments-wrap">
-                <div id="disqus_thread"></div>
-                <script type="text/javascript">
-                  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-                  var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
+<div id="comment-jump" class="comments"><div id="comments">
+        <div class="comments-wrap">
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+              /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+              var disqus_shortname = 'invalidargblog'; // required: replace example with your forum shortname
 
-                  /* * * DON'T EDIT BELOW THIS LINE * * */
-                  (function() {
-                      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                  })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            </div>
+              /* * * DON'T EDIT BELOW THIS LINE * * */
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
     </div>
+</div>
 
-    <div class="next-prev">
-        {% if page.previous.url %}
-            <div class="prev-post"> 
-                <a href="{{page.previous.url}}" rel="prev">Previous Post</a>
-            </div>
-        {% endif %}
-        {% if page.next.url %}
-            <div class="next-post"> 
-                <a href="{{page.next.url}}" rel="next">Next Post</a>
-            </div>
-        {% endif %}
-    </div>
+<div class="next-prev">
+    {% if page.previous.url %}
+        <div class="prev-post"> 
+            <a href="{{page.previous.url}}" rel="prev">Previous Post</a>
+        </div>
+    {% endif %}
+    {% if page.next.url %}
+        <div class="next-post"> 
+            <a href="{{page.next.url}}" rel="next">Next Post</a>
+        </div>
+    {% endif %}
 </div>
 
